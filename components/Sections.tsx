@@ -15,7 +15,6 @@ export function Collections() {
     <section className="section" aria-labelledby="collections-h">
       <div className="container">
         <div className="section-head">
-          <p className="label">{t.eyebrow}</p>
           <h2 className="h2" id="collections-h">{t.h2}</h2>
         </div>
         <ul className="collections">
@@ -28,9 +27,7 @@ export function Collections() {
               >
                 <Photo name={c.key as ImageKey} className="ratio-43" />
                 <span className="h3">{c.title}</span>
-                <span className="label">
-                  {venues.filter((v) => v.fit[c.body as Occasion] >= 2).length} places · New York demo
-                </span>
+                <span className="muted">{venues.filter((v) => v.fit[c.body as Occasion] >= 2).length} places</span>
               </button>
             </li>
           ))}
@@ -72,7 +69,6 @@ export function BrandStory() {
       <Photo name="story" className="story-photo" position="center 45%" />
       <div className="container story-inner">
         <div className="story-copy">
-          <p className="label">{t.eyebrow}</p>
           <h2 className="h2" id="story-h">{t.h2}</h2>
           <p className="muted">{t.body}</p>
         </div>

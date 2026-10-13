@@ -17,7 +17,6 @@ export function AppDemo() {
     <section className="section appdemo" id="app" aria-labelledby="app-h">
       <div className="container appdemo-grid">
         <div className="appdemo-copy">
-          <p className="label">{t.eyebrow}</p>
           <h2 className="h2" id="app-h">{t.h2}</h2>
           <ol className="perks" role="tablist" aria-label="App features">
             {t.perks.map((p, i) => (
@@ -30,7 +29,6 @@ export function AppDemo() {
                   className="perk"
                   onClick={() => setPerk(p.id as Perk)}
                 >
-                  <span className="perk-num">{String(i + 1).padStart(2, "0")}</span>
                   <span className="perk-text">
                     <span className="perk-title">{p.title}</span>
                     <span className="perk-body">{p.body}</span>
@@ -39,7 +37,7 @@ export function AppDemo() {
               </li>
             ))}
           </ol>
-          <p className="label">{DEMO_DISCLAIMER}</p>
+          <p className="small muted">{DEMO_DISCLAIMER}</p>
         </div>
         <div className="phone-wrap">
           <div className="phone">
@@ -53,7 +51,6 @@ export function AppDemo() {
               {perk === "passport" && <PassportScreen />}
             </div>
           </div>
-          <p className="label phone-hint">{t.tryIt}</p>
         </div>
       </div>
     </section>

@@ -16,7 +16,7 @@ export const copy = {
     eyebrow: "What members get",
     h2: "The app, in a minute",
     perks: [
-      { id: "list", title: "Your list", body: "Four questions, then New York ranked for you. Change the mood and the list changes." },
+      { id: "list", title: "Your list", body: "Answer four questions and get a list ranked for you. Change the mood and the list changes." },
       { id: "place", title: "Know before you go", body: "Laptop rules, noise, bookings. If we haven’t checked, it says so." },
       { id: "offer", title: "Member offers", body: "Perks at places on the list, like a second coffee on your first visit. Terms up front." },
       { id: "passport", title: "Passport", body: "Log visits, finish challenges, keep the badges." },
@@ -35,9 +35,9 @@ export const copy = {
   },
 
   hero: {
-    label: "New York first",
+    label: "",
     h1: "Hand-picked cafés and restaurants, matched to you.",
-    body: "Scored by our editors, ranked by your taste. Launching in New York.",
+    body: "Scored by our editors, ranked by your taste.",
     primary: "Request access",
     secondary: "See the app",
     caption: "Placeholder photo",
@@ -60,7 +60,7 @@ export const copy = {
     lede: "Four questions. Your answers decide what you see first. We open one city at a time.",
     cityQ: "Which city?",
     cityLabel: "City",
-    cityPlaceholder: "New York",
+    cityPlaceholder: "Your city",
     next: "Next",
     back: "Back",
     start: "Start",
@@ -130,7 +130,7 @@ export const copy = {
   },
 
   collections: {
-    eyebrow: "New York lists",
+    eyebrow: "",
     h2: "Start from a list",
     items: [
       { key: "work", title: "Laptop hours", body: "work" },

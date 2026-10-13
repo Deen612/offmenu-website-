@@ -117,7 +117,6 @@ export const Apply = forwardRef<HTMLElement, { configured: boolean }>(function A
     <section className="section apply" id="apply" ref={ref} aria-labelledby="apply-h">
       <div className="container apply-grid">
         <div className="apply-intro">
-          <p className="label">{t.eyebrow}</p>
           <h2 className="h2" id="apply-h">{t.h2}</h2>
           <p className="lede">{t.lede}</p>
         </div>

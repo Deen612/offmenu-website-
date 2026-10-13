@@ -14,7 +14,6 @@ export function Results({ results, onOpen }: { results: Result[]; onOpen?: (id: 
         const isSaved = saved.includes(r.venue.id);
         return (
           <li className="menu-row" key={r.venue.id}>
-            <span className="menu-num label">{String(i + 1).padStart(2, "0")}</span>
             <div className="menu-main">
               <div className="menu-line">
                 {onOpen ? (
@@ -32,7 +31,7 @@ export function Results({ results, onOpen }: { results: Result[]; onOpen?: (id: 
                 {r.nearby ? " · nearby" : ""}
               </p>
               <p className="menu-why">
-                {r.top && <span className="pill">Top match</span>} {r.reason}
+                {r.reason}
               </p>
             </div>
             <button className="save-btn" aria-pressed={isSaved} onClick={() => toggle(r.venue.id)}>

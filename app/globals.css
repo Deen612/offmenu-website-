@@ -2064,3 +2064,8 @@ button.menu-name:hover {
 .phone-hint {
   color: var(--muted);
 }
+
+/* Revision 8: no decorative numbering */
+.menu-row { grid-template-columns: 1fr auto; }
+.phone .menu-row { grid-template-columns: 1fr auto; }
+.vetted-step, .perk { grid-template-columns: 1fr; }

@@ -13,9 +13,6 @@ export function Hero() {
       <div className="container hero2-grid">
         <div className="hero2-panel">
           <Photo name="hero" className="fill" eager position="center 60%" />
-          <div className="hero2-overlay">
-            <span className="hero2-tag">{t.label}</span>
-          </div>
         </div>
         <div className="hero2-panel dark">
           <Photo name="dinner" className="fill" eager position="center 40%" />
