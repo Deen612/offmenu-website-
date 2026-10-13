@@ -6,12 +6,10 @@ export const CONSENT_VERSION = "2026-10-13.v2";
 
 export const copy = {
   meta: {
-    title: "Off Menu | Every table, visited first",
-    description:
-      "A guide to cafés and restaurants where every listing starts with a visit from our team. Answer four questions and request access.",
-    socialTitle: "Off Menu | Every table, visited first",
-    socialDescription:
-      "Cafés and restaurants our team has sat in, ranked for how you like to eat, drink and sit. From the people behind Cafes Globally.",
+    title: "Off Menu | Hand-picked cafés and restaurants",
+    description: "Hand-picked cafés and restaurants, scored by editors and matched to your taste. No star ratings, no reviews from strangers. Request access.",
+    socialTitle: "Off Menu | Hand-picked cafés and restaurants",
+    socialDescription: "Scored by editors, matched to you. From the team behind Cafes Globally.",
   },
 
   nav: {
@@ -24,29 +22,29 @@ export const copy = {
   },
 
   hero: {
-    label: "By the team behind Cafes Globally",
-    h1: "every table on here, we’ve sat at.",
-    body: "A café and restaurant guide where nothing gets listed until we’ve been.",
+    label: "From the team behind Cafes Globally",
+    h1: "hand-picked places, matched to you.",
+    body: "Every café and restaurant on Off Menu is scored by our editors before it’s listed. Four questions about how you like to eat and drink decide which ones you see first.",
     primary: "Request access",
-    secondary: "How it works",
+    secondary: "How we pick",
     caption: "Placeholder photo",
   },
 
   vetted: {
-    eyebrow: "How it works",
-    h2: "no visit, no listing.",
+    eyebrow: "How we pick",
+    h2: "no stars. no reviews from strangers.",
     lede: "",
     steps: [
-      { title: "we go in person.", body: "Order, sit, stay." },
-      { title: "we note what reviews miss.", body: "Noise, plugs, light, what to order." },
-      { title: "you get matched on those notes.", body: "Not star averages." },
+      { title: "scored on five things.", body: "The coffee or food, the room, value, how well known it is, and whether you can stay an hour." },
+      { title: "it passes or it’s gone.", body: "A place that fails isn’t ranked lower. It isn’t on the app." },
+      { title: "famous counts against it.", body: "Five branches and national press means a low discovery score. The place nobody’s written about yet scores high." },
     ],
   },
 
   apply: {
     eyebrow: "Request access",
     h2: "request access.",
-    lede: "Four questions. We open city by city.",
+    lede: "Four questions. Your answers decide what you see first. We open one city at a time.",
     cityQ: "Which city?",
     cityLabel: "City",
     cityPlaceholder: "London",
@@ -98,7 +96,7 @@ export const copy = {
   passport: {
     eyebrow: "Passport",
     h2: "collect the city.",
-    body: "Check in, get a stamp. Finish a challenge, keep the badge.",
+    body: "Log a visit, get a stamp. Finish a challenge, like four coffees before 9 am, and the badge stays on your profile.",
     demo: "Demo. Tap a stamp.",
     levelLabel: "Level",
     stampsLabel: "stamps",
@@ -120,7 +118,7 @@ export const copy = {
 
   collections: {
     eyebrow: "Lists",
-    h2: "lists, not search results.",
+    h2: "start from a list.",
     items: [
       { key: "work", title: "work from here", body: "work" },
       { key: "dinner", title: "dinner for two", body: "date" },
@@ -130,17 +128,17 @@ export const copy = {
   },
 
   offers: {
-    eyebrow: "First-visit offers",
-    h2: "a reason to try the place you saved.",
-    body: "Some listed places will offer something on your first visit. An offer never decides whether a place is listed or where it ranks.",
-    status: "Planned. Offers depend on the venue and the city.",
+    eyebrow: "Offers",
+    h2: "a second coffee on your first visit.",
+    body: "Some places on Off Menu will give members something the first time they go. The terms are on the screen before you leave the house, and an offer never moves a place up your list.",
+    status: "Coming after launch. Depends on the place and the city.",
     example: {
       label: "Example offer",
       title: "Second coffee on us",
       meta: "Filter or espresso · Weekdays, 2–5 pm",
       terms: "Example only. This can’t be redeemed.",
     },
-    cta: "See the example terms",
+    cta: "See the terms screen",
   },
 
   story: {
@@ -152,18 +150,19 @@ export const copy = {
   faq: {
     h2: "questions",
     items: [
-      { q: "What does “visited” mean?", a: "Someone from our team went, ordered and stayed. Venues can’t pay to be listed." },
+      { q: "Who picks the places?", a: "Our editors, with the team behind Cafes Globally. Each place is scored on five things and has to pass to be listed. Venues can’t pay to get in." },
+      { q: "What are offers?", a: "Perks from some listed places, like a second coffee on your first visit. You see the terms before you go." },
+      { q: "What’s the passport?", a: "Stamps for places you’ve been, challenges to finish, badges you keep. Nothing to spend." },
       { q: "When can I use it?", a: "We open one city at a time. Request access and tell us yours." },
-      { q: "What’s the passport?", a: "Stamps for places you’ve been and badges for finished challenges. Nothing to spend." },
     ],
   },
 
   partner: {
     h2: "own a café or restaurant?",
-    body: "Tell us where you are. We might visit.",
+    body: "Tell us about your place. If it passes, we’ll be in touch.",
     button: "Tell us about your place",
     formTitle: "Tell us about your place",
-    formNote: "No promises. We list places we’ve been to and liked.",
+    formNote: "Every place is scored by our editors. Sending this doesn’t guarantee a listing.",
     venue: "Venue name",
     city: "City",
     email: "Contact email",
@@ -172,14 +171,14 @@ export const copy = {
     restaurant: "Restaurant",
     website: "Website or Instagram",
     submit: "Send",
-    success: "Thanks. We’ll be in touch if we’re visiting.",
+    success: "Thanks. We’ll be in touch.",
     required: "Fill this in.",
     urlError: "Paste the full link, starting with https://",
     unconfigured: "Demo only. Nothing is saved here.",
   },
 
   footer: {
-    line: "Every table, visited first.",
+    line: "Hand-picked cafés and restaurants.",
     attribution: "By the team behind Cafes Globally.",
     photos: "Placeholder photos. Pictured places aren’t Off Menu partners.",
   },
