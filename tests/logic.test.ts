@@ -29,7 +29,7 @@ test("partner form needs venue, city, email and type; website optional but check
 
 test("ranking returns three cards of the chosen kind with one top match", () => {
   for (const s of sampleRequests) {
-    const r = rank({ area: "soho", ...s.prefs });
+    const r = rank({ area: "les", ...s.prefs });
     assert.equal(r.length, 3);
     assert.ok(r.every((x) => x.venue.kind === s.prefs.kind));
     assert.equal(r.filter((x) => x.top).length, 1);
@@ -39,8 +39,8 @@ test("ranking returns three cards of the chosen kind with one top match", () => 
 
 test("each control changes something visible", () => {
   const key = (p: Parameters<typeof rank>[0]) => rank(p).map((r) => r.venue.id + r.reason).join("|");
-  const base = { area: "clerkenwell", kind: "cafe", mood: "quiet", occasion: "work" } as const;
-  assert.notEqual(key(base), key({ ...base, area: "borough" }));
+  const base = { area: "westvillage", kind: "cafe", mood: "quiet", occasion: "work" } as const;
+  assert.notEqual(key(base), key({ ...base, area: "williamsburg" }));
   assert.notEqual(key(base), key({ ...base, kind: "restaurant" }));
   assert.notEqual(key(base), key({ ...base, occasion: "friends" }));
   assert.notEqual(key({ ...base, kind: "restaurant", occasion: "date" }), key({ ...base, kind: "restaurant", occasion: "friends" }));

@@ -102,7 +102,7 @@ function ScreenTop({ title, sub }: { title: string; sub: string }) {
   );
 }
 
-function FeedScreen({ prefs, setPrefs, onOpen }: { prefs: Prefs; setPrefs: (p: Prefs) => void; onOpen: (id: string) => void }) {
+export function FeedScreen({ prefs, setPrefs, onOpen }: { prefs: Prefs; setPrefs: (p: Prefs) => void; onOpen: (id: string) => void }) {
   return (
     <>
       <ScreenTop title={areas.find((a) => a.id === prefs.area)?.label ?? "London"} sub="Nearby · demo" />
@@ -152,7 +152,7 @@ function SearchScreen({
   );
 }
 
-function VenueScreen({ id }: { id: string }) {
+export function VenueScreen({ id }: { id: string }) {
   const v = venues.find((x) => x.id === id) ?? venues[0];
   const { saved, toggle } = useSaved();
   const area = areas.find((a) => a.id === v.area)?.label;
@@ -181,7 +181,7 @@ function VenueScreen({ id }: { id: string }) {
   );
 }
 
-function OfferScreen() {
+export function OfferScreen() {
   const o = copy.offers.example;
   return (
     <>
@@ -202,7 +202,7 @@ function OfferScreen() {
   );
 }
 
-function PassportScreen() {
+export function PassportScreen() {
   const [visited, setVisited] = useState(1);
   const [view, setView] = useState<"visited" | "saved">("visited");
   const { saved } = useSaved();

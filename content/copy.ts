@@ -12,8 +12,21 @@ export const copy = {
     socialDescription: "Scored by editors, matched to you. From the team behind Cafes Globally.",
   },
 
+  app: {
+    eyebrow: "What members get",
+    h2: "The app, in a minute",
+    perks: [
+      { id: "list", title: "Your list", body: "Four questions, then New York ranked for you. Change the mood and the list changes." },
+      { id: "place", title: "Know before you go", body: "Laptop rules, noise, bookings. If we haven’t checked, it says so." },
+      { id: "offer", title: "Member offers", body: "Perks at places on the list, like a second coffee on your first visit. Terms up front." },
+      { id: "passport", title: "Passport", body: "Log visits, finish challenges, keep the badges." },
+    ],
+    tryIt: "Tap around. It works.",
+  },
+
   nav: {
-    how: "How it works",
+    how: "How we pick",
+    app: "The app",
     passport: "Passport",
     venues: "For venues",
     apply: "Request access",
@@ -22,32 +35,32 @@ export const copy = {
   },
 
   hero: {
-    label: "From the team behind Cafes Globally",
-    h1: "hand-picked places, matched to you.",
-    body: "Every café and restaurant on Off Menu is scored by our editors before it’s listed. Four questions about how you like to eat and drink decide which ones you see first.",
+    label: "New York first",
+    h1: "Hand-picked cafés and restaurants, matched to you.",
+    body: "Scored by our editors, ranked by your taste. Launching in New York.",
     primary: "Request access",
-    secondary: "How we pick",
+    secondary: "See the app",
     caption: "Placeholder photo",
   },
 
   vetted: {
     eyebrow: "How we pick",
-    h2: "no stars. no reviews from strangers.",
+    h2: "No stars. No reviews from strangers.",
     lede: "",
     steps: [
-      { title: "scored on five things.", body: "The coffee or food, the room, value, how well known it is, and whether you can stay an hour." },
-      { title: "it passes or it’s gone.", body: "A place that fails isn’t ranked lower. It isn’t on the app." },
-      { title: "famous counts against it.", body: "Five branches and national press means a low discovery score. The place nobody’s written about yet scores high." },
+      { title: "Scored on five things.", body: "The coffee or food, the room, value, how well known it is, and whether you can stay an hour." },
+      { title: "It passes or it’s gone.", body: "A place that fails isn’t ranked lower. It isn’t on the app." },
+      { title: "Famous counts against it.", body: "Five branches and national press means a low discovery score. The place nobody’s written about yet scores high." },
     ],
   },
 
   apply: {
     eyebrow: "Request access",
-    h2: "request access.",
+    h2: "Request access",
     lede: "Four questions. Your answers decide what you see first. We open one city at a time.",
     cityQ: "Which city?",
     cityLabel: "City",
-    cityPlaceholder: "London",
+    cityPlaceholder: "New York",
     next: "Next",
     back: "Back",
     start: "Start",
@@ -59,7 +72,7 @@ export const copy = {
     consent: "Email me when Off Menu opens in my city. Unsubscribe any time.",
     submit: "Request access",
     submitting: "Sending…",
-    doneH: "you’re on the list.",
+    doneH: "You’re on the list.",
     doneBody: "We’ll email you when we open in",
     doneBodyNoCity: "We’ll email you when we open in your city.",
     referH: "Skip ahead",
@@ -109,22 +122,22 @@ export const copy = {
       { at: 9, name: "off menu" },
     ],
     challenges: [
-      { id: "leather-lane", title: "coffee crawl, clerkenwell", badge: "Leather Lane", stamps: ["Prufrock Coffee", "Department of Coffee", "Kaffeine"] },
-      { id: "soho-counter", title: "eat at the counter", badge: "Counter seat", stamps: ["Kiln", "Barrafina"] },
-      { id: "early", title: "four coffees before 9 am", badge: "Early riser", stamps: ["Mon", "Tue", "Thu", "Sat"] },
+      { id: "ev-coffee", title: "East Village coffee crawl", badge: "Avenue A", stamps: ["Abraço", "Hi-Collar", "Veselka"] },
+      { id: "wv-dinner", title: "Two West Village dinners", badge: "Grove Street", stamps: ["Via Carota", "L’Artusi"] },
+      { id: "early", title: "Four coffees before 9 am", badge: "Early riser", stamps: ["Mon", "Tue", "Thu", "Sat"] },
     ],
     earned: "Badge earned",
   },
 
   collections: {
-    eyebrow: "Lists",
-    h2: "start from a list.",
+    eyebrow: "New York lists",
+    h2: "Start from a list",
     items: [
-      { key: "work", title: "work from here", body: "work" },
-      { key: "dinner", title: "dinner for two", body: "date" },
-      { key: "neighbourhood", title: "bring everyone", body: "friends" },
+      { key: "work", title: "Laptop hours", body: "work" },
+      { key: "dinner", title: "Dinner for two", body: "date" },
+      { key: "neighbourhood", title: "Bring everyone", body: "friends" },
     ],
-    open: "Open list",
+    open: "Open in the app",
   },
 
   offers: {
@@ -148,7 +161,7 @@ export const copy = {
   },
 
   faq: {
-    h2: "questions",
+    h2: "Questions",
     items: [
       { q: "Who picks the places?", a: "Our editors, with the team behind Cafes Globally. Each place is scored on five things and has to pass to be listed. Venues can’t pay to get in." },
       { q: "What are offers?", a: "Perks from some listed places, like a second coffee on your first visit. You see the terms before you go." },
@@ -158,7 +171,7 @@ export const copy = {
   },
 
   partner: {
-    h2: "own a café or restaurant?",
+    h2: "Own a café or restaurant?",
     body: "Tell us about your place. If it passes, we’ll be in touch.",
     button: "Tell us about your place",
     formTitle: "Tell us about your place",
@@ -184,8 +197,8 @@ export const copy = {
   },
 
   modal: {
-    title: "the app",
-    caption: "Demo screens. Real London places, not reviewed by Off Menu.",
+    title: "The app",
+    caption: "Demo screens. Real New York places, not reviewed by Off Menu.",
     close: "Close",
     tabs: { feed: "Nearby", search: "Ask", venue: "A place", offer: "Offer", passport: "Passport" },
   },

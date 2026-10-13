@@ -4,25 +4,34 @@ import { copy } from "@/content/copy";
 import { Photo } from "./Photo";
 import { useUI } from "./ui";
 
+/** Opulist-style: two large photo panels; the right one carries the pitch. */
 export function Hero() {
   const t = copy.hero;
   const { goToApply } = useUI();
   return (
-    <section className="hero" id="top">
-      <Photo name="hero" className="hero-bg" eager position="center 62%" />
-      <div className="hero-shade" aria-hidden="true" />
-      <div className="container hero-inner">
-        <p className="label hero-label">{t.label}</p>
-        <h1 className="h1">{t.h1}</h1>
-        <p className="hero-body">{t.body}</p>
-        <div className="hero-actions">
-          <a className="btn btn-light" href="#apply" onClick={(e) => { e.preventDefault(); goToApply(); }}>
-            {t.primary}
-          </a>
-          <a className="link link-light" href="#how">{t.secondary}</a>
+    <section className="hero2" id="top">
+      <div className="container hero2-grid">
+        <div className="hero2-panel">
+          <Photo name="hero" className="fill" eager position="center 60%" />
+          <div className="hero2-overlay">
+            <span className="hero2-tag">{t.label}</span>
+          </div>
+        </div>
+        <div className="hero2-panel dark">
+          <Photo name="dinner" className="fill" eager position="center 40%" />
+          <div className="hero2-shade" aria-hidden="true" />
+          <div className="hero2-copy">
+            <h1 className="h1">{t.h1}</h1>
+            <p>{t.body}</p>
+            <div className="hero-actions">
+              <a className="btn btn-light" href="#apply" onClick={(e) => { e.preventDefault(); goToApply(); }}>
+                {t.primary}
+              </a>
+              <a className="link link-light" href="#app">{t.secondary}</a>
+            </div>
+          </div>
         </div>
       </div>
-      <p className="hero-caption label">{t.caption}</p>
     </section>
   );
 }

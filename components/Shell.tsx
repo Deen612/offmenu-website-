@@ -4,10 +4,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { copy } from "@/content/copy";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
-import { DiscoveryPreview } from "./DiscoveryPreview";
-import { Collections, FAQ, Footer, Offers, PartnerStrip } from "./Sections";
+import { AppDemo } from "./AppDemo";
+import { Collections, FAQ, Footer, PartnerStrip } from "./Sections";
 import { Apply } from "./Apply";
-import { Passport } from "./Passport";
 import { Vetted } from "./Vetted";
 import { Modal } from "./Modal";
 import { PartnerForm } from "./PartnerForm";
@@ -66,11 +65,9 @@ export function Shell({ configured }: { configured: boolean }) {
       <Header />
       <main id="main">
         <Hero />
-        <Vetted />
         <Collections />
-        <DiscoveryPreview />
-        <Passport />
-        <Offers />
+        <AppDemo />
+        <Vetted />
         <Apply ref={applyRef} configured={configured} />
         <FAQ />
         <PartnerStrip />

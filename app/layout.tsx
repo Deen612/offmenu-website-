@@ -1,5 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/schibsted-grotesk/index.css";
+import "@fontsource/eb-garamond/latin-400.css";
+import "@fontsource/eb-garamond/latin-400-italic.css";
+import "@fontsource/eb-garamond/latin-500.css";
 import "./globals.css";
 import { copy } from "@/content/copy";
 

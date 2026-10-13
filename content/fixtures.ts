@@ -1,4 +1,4 @@
-// Demo data: real, well-known London cafés and restaurants, used to show how
+// Demo data: real, well-known New York cafés and restaurants, used to show how
 // ranking works. Off Menu has NOT visited or vetted these places and has no
 // relationship with them. The page says so wherever they appear.
 //
@@ -9,7 +9,7 @@
 export type Kind = "cafe" | "restaurant";
 export type Mood = "quiet" | "lively";
 export type Occasion = "work" | "friends" | "date";
-export type Area = "shoreditch" | "clerkenwell" | "soho" | "borough";
+export type Area = "westvillage" | "eastvillage" | "les" | "williamsburg";
 
 export type Venue = {
   id: string;
@@ -21,15 +21,15 @@ export type Venue = {
   mood: Mood;
   /** How well the place suits each occasion, 0–3 (demo tag). */
   fit: Record<Occasion, number>;
-  price: "£" | "££" | "£££";
+  price: "$" | "$$" | "$$$";
   facts: { label: string; value: string | null }[];
 };
 
 export const areas: { id: Area; label: string }[] = [
-  { id: "shoreditch", label: "Shoreditch" },
-  { id: "clerkenwell", label: "Clerkenwell" },
-  { id: "soho", label: "Soho" },
-  { id: "borough", label: "Borough" },
+  { id: "westvillage", label: "West Village" },
+  { id: "eastvillage", label: "East Village" },
+  { id: "les", label: "Lower East Side" },
+  { id: "williamsburg", label: "Williamsburg" },
 ];
 
 const unknownFacts = (kind: Kind) =>
@@ -48,37 +48,34 @@ const unknownFacts = (kind: Kind) =>
 const v = (x: Omit<Venue, "facts">): Venue => ({ ...x, facts: unknownFacts(x.kind) });
 
 export const venues: Venue[] = [
-  // Shoreditch
-  v({ id: "ozone", kind: "cafe", name: "Ozone Coffee", neighbourhood: "Shoreditch", area: "shoreditch", knownFor: "Roastery and all-day café", mood: "lively", fit: { work: 2, friends: 3, date: 1 }, price: "££" }),
-  v({ id: "allpress", kind: "cafe", name: "Allpress Espresso", neighbourhood: "Shoreditch", area: "shoreditch", knownFor: "Espresso bar and roastery", mood: "quiet", fit: { work: 3, friends: 1, date: 1 }, price: "£" }),
-  v({ id: "brat", kind: "restaurant", name: "Brat", neighbourhood: "Shoreditch", area: "shoreditch", knownFor: "Wood-fired grill", mood: "lively", fit: { work: 0, friends: 3, date: 3 }, price: "£££" }),
-  v({ id: "clove", kind: "restaurant", name: "The Clove Club", neighbourhood: "Shoreditch", area: "shoreditch", knownFor: "Tasting menu", mood: "quiet", fit: { work: 0, friends: 1, date: 3 }, price: "£££" }),
-  v({ id: "rochelle", kind: "restaurant", name: "Rochelle Canteen", neighbourhood: "Shoreditch", area: "shoreditch", knownFor: "Seasonal British lunches", mood: "quiet", fit: { work: 1, friends: 2, date: 2 }, price: "££" }),
+  // West Village
+  v({ id: "joe", kind: "cafe", name: "Joe Coffee", neighbourhood: "Waverly Place", area: "westvillage", knownFor: "Neighbourhood espresso bar", mood: "quiet", fit: { work: 2, friends: 2, date: 1 }, price: "$" }),
+  v({ id: "stumptown", kind: "cafe", name: "Stumptown Coffee", neighbourhood: "West 8th Street", area: "westvillage", knownFor: "Roaster’s coffee bar", mood: "lively", fit: { work: 2, friends: 2, date: 1 }, price: "$" }),
+  v({ id: "viacarota", kind: "restaurant", name: "Via Carota", neighbourhood: "Grove Street", area: "westvillage", knownFor: "Italian, no reservations", mood: "lively", fit: { work: 0, friends: 3, date: 3 }, price: "$$" }),
+  v({ id: "lartusi", kind: "restaurant", name: "L’Artusi", neighbourhood: "West 10th Street", area: "westvillage", knownFor: "Italian, long counter", mood: "lively", fit: { work: 0, friends: 2, date: 3 }, price: "$$$" }),
 
-  // Clerkenwell
-  v({ id: "prufrock", kind: "cafe", name: "Prufrock Coffee", neighbourhood: "Leather Lane", area: "clerkenwell", knownFor: "Specialty coffee bar", mood: "quiet", fit: { work: 3, friends: 2, date: 1 }, price: "£" }),
-  v({ id: "dept", kind: "cafe", name: "Department of Coffee and Social Affairs", neighbourhood: "Leather Lane", area: "clerkenwell", knownFor: "Coffee bar", mood: "lively", fit: { work: 2, friends: 2, date: 1 }, price: "£" }),
-  v({ id: "stjohn", kind: "restaurant", name: "St. JOHN", neighbourhood: "Smithfield", area: "clerkenwell", knownFor: "Nose-to-tail British cooking", mood: "lively", fit: { work: 0, friends: 3, date: 2 }, price: "£££" }),
-  v({ id: "qch", kind: "restaurant", name: "Quality Chop House", neighbourhood: "Farringdon Road", area: "clerkenwell", knownFor: "British dining room", mood: "quiet", fit: { work: 1, friends: 2, date: 3 }, price: "£££" }),
-  v({ id: "sessions", kind: "restaurant", name: "Sessions Arts Club", neighbourhood: "Clerkenwell Green", area: "clerkenwell", knownFor: "Dining room in an old courthouse", mood: "quiet", fit: { work: 0, friends: 1, date: 3 }, price: "£££" }),
+  // East Village
+  v({ id: "abraco", kind: "cafe", name: "Abraço", neighbourhood: "East 7th Street", area: "eastvillage", knownFor: "Tiny espresso bar", mood: "lively", fit: { work: 0, friends: 2, date: 2 }, price: "$" }),
+  v({ id: "hicollar", kind: "cafe", name: "Hi-Collar", neighbourhood: "East 10th Street", area: "eastvillage", knownFor: "Japanese kissaten coffee", mood: "quiet", fit: { work: 1, friends: 1, date: 3 }, price: "$$" }),
+  v({ id: "veselka", kind: "restaurant", name: "Veselka", neighbourhood: "Second Avenue", area: "eastvillage", knownFor: "Ukrainian diner", mood: "lively", fit: { work: 1, friends: 3, date: 1 }, price: "$" }),
+  v({ id: "superiority", kind: "restaurant", name: "Superiority Burger", neighbourhood: "Avenue A", area: "eastvillage", knownFor: "Vegetarian diner", mood: "lively", fit: { work: 0, friends: 3, date: 2 }, price: "$$" }),
 
-  // Soho
-  v({ id: "baritalia", kind: "cafe", name: "Bar Italia", neighbourhood: "Frith Street", area: "soho", knownFor: "Late-night Italian espresso bar", mood: "lively", fit: { work: 0, friends: 3, date: 2 }, price: "£" }),
-  v({ id: "kaffeine", kind: "cafe", name: "Kaffeine", neighbourhood: "Fitzrovia", area: "soho", knownFor: "Espresso bar", mood: "quiet", fit: { work: 2, friends: 2, date: 1 }, price: "£" }),
-  v({ id: "bao", kind: "restaurant", name: "Bao", neighbourhood: "Lexington Street", area: "soho", knownFor: "Taiwanese bao", mood: "lively", fit: { work: 0, friends: 3, date: 2 }, price: "££" }),
-  v({ id: "kiln", kind: "restaurant", name: "Kiln", neighbourhood: "Brewer Street", area: "soho", knownFor: "Thai cooking over fire, counter seats", mood: "lively", fit: { work: 0, friends: 2, date: 3 }, price: "££" }),
-  v({ id: "barrafina", kind: "restaurant", name: "Barrafina", neighbourhood: "Dean Street", area: "soho", knownFor: "Spanish tapas at the counter", mood: "lively", fit: { work: 0, friends: 2, date: 3 }, price: "£££" }),
+  // Lower East Side
+  v({ id: "russ", kind: "restaurant", name: "Russ & Daughters Cafe", neighbourhood: "Orchard Street", area: "les", knownFor: "Smoked fish and bagels", mood: "lively", fit: { work: 0, friends: 3, date: 2 }, price: "$$" }),
+  v({ id: "kikis", kind: "restaurant", name: "Kiki’s", neighbourhood: "Division Street", area: "les", knownFor: "Greek taverna", mood: "lively", fit: { work: 0, friends: 3, date: 2 }, price: "$$" }),
+  v({ id: "dudleys", kind: "restaurant", name: "Dudleys", neighbourhood: "Orchard Street", area: "les", knownFor: "Corner bistro", mood: "lively", fit: { work: 1, friends: 3, date: 2 }, price: "$$" }),
+  v({ id: "cafegrumpy", kind: "cafe", name: "Café Grumpy", neighbourhood: "Essex Street", area: "les", knownFor: "Coffee roaster", mood: "quiet", fit: { work: 2, friends: 1, date: 1 }, price: "$" }),
 
-  // Borough
-  v({ id: "monmouth", kind: "cafe", name: "Monmouth Coffee", neighbourhood: "Borough Market", area: "borough", knownFor: "Coffee roaster", mood: "lively", fit: { work: 1, friends: 2, date: 1 }, price: "£" }),
-  v({ id: "watchhouse", kind: "cafe", name: "WatchHouse", neighbourhood: "Bermondsey Street", area: "borough", knownFor: "Coffee in a 19th-century watch house", mood: "quiet", fit: { work: 2, friends: 2, date: 2 }, price: "££" }),
-  v({ id: "padella", kind: "restaurant", name: "Padella", neighbourhood: "Borough Market", area: "borough", knownFor: "Fresh pasta, no bookings", mood: "lively", fit: { work: 0, friends: 3, date: 2 }, price: "£" }),
-  v({ id: "arabica", kind: "restaurant", name: "Arabica", neighbourhood: "Borough Market", area: "borough", knownFor: "Levantine sharing plates", mood: "lively", fit: { work: 0, friends: 3, date: 1 }, price: "££" }),
+  // Williamsburg
+  v({ id: "devocion", kind: "cafe", name: "Devoción", neighbourhood: "Grand Street", area: "williamsburg", knownFor: "Colombian coffee, skylit room", mood: "quiet", fit: { work: 3, friends: 2, date: 2 }, price: "$$" }),
+  v({ id: "partners", kind: "cafe", name: "Partners Coffee", neighbourhood: "North 6th Street", area: "williamsburg", knownFor: "Roaster café", mood: "lively", fit: { work: 2, friends: 2, date: 1 }, price: "$" }),
+  v({ id: "lilia", kind: "restaurant", name: "Lilia", neighbourhood: "Union Avenue", area: "williamsburg", knownFor: "Italian, wood fire", mood: "lively", fit: { work: 0, friends: 2, date: 3 }, price: "$$$" }),
+  v({ id: "sundayinbk", kind: "restaurant", name: "Sunday in Brooklyn", neighbourhood: "Wythe Avenue", area: "williamsburg", knownFor: "All-day American", mood: "lively", fit: { work: 1, friends: 3, date: 2 }, price: "$$" }),
 ];
 
 export type Prefs = { area: Area; kind: Kind; mood: Mood; occasion: Occasion };
 
-export const defaultPrefs: Prefs = { area: "clerkenwell", kind: "cafe", mood: "quiet", occasion: "work" };
+export const defaultPrefs: Prefs = { area: "westvillage", kind: "cafe", mood: "quiet", occasion: "work" };
 
 /** Sample requests and the controls each one sets. Fixed rules, not AI. */
 export const sampleRequests: { label: string; prefs: Omit<Prefs, "area"> }[] = [
@@ -115,4 +112,4 @@ export function rank(prefs: Prefs, list: Venue[] = venues): Result[] {
 }
 
 export const DEMO_DISCLAIMER =
-  "Demo data. Real London places used to show how matching works. Off Menu hasn’t reviewed them and has no link with them.";
+  "Demo. Real New York places used to show how matching works. Off Menu hasn’t reviewed them and has no link with them.";

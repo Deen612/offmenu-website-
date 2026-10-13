@@ -29,7 +29,7 @@ export function Collections() {
                 <Photo name={c.key as ImageKey} className="ratio-43" />
                 <span className="h3">{c.title}</span>
                 <span className="label">
-                  {venues.filter((v) => v.fit[c.body as Occasion] >= 2).length} places · London demo
+                  {venues.filter((v) => v.fit[c.body as Occasion] >= 2).length} places · New York demo
                 </span>
               </button>
             </li>

@@ -37,12 +37,14 @@ export function Header() {
   return (
     <header className="header">
       <div className="container header-inner">
+        <nav className="nav-desktop nav-left" aria-label="Sections">
+          <a className="nav-link" href="#app">{t.app}</a>
+          <a className="nav-link" href="#how">{t.how}</a>
+        </nav>
         <a className="brand" href="#top" aria-label="Off Menu, back to top">
           <Logo className="brand-logo" title="Off Menu" />
         </a>
-        <nav className="nav-desktop" aria-label="Sections">
-          <a className="nav-link" href="#how">{t.how}</a>
-          <a className="nav-link" href="#passport">{t.passport}</a>
+        <nav className="nav-desktop nav-right" aria-label="Account">
           <a className="nav-link" href="#venues" onClick={(e) => { e.preventDefault(); openPartner(e.currentTarget); }}>
             {t.venues}
           </a>
@@ -60,8 +62,8 @@ export function Header() {
         </button>
       </div>
       <nav id="mobile-nav" className="mobile-nav" hidden={!open} aria-label="Menu">
+        <a className="nav-link" href="#app" onClick={close}>{t.app}</a>
         <a className="nav-link" href="#how" onClick={close}>{t.how}</a>
-        <a className="nav-link" href="#passport" onClick={close}>{t.passport}</a>
         <a className="nav-link" href="#venues" onClick={close}>{t.venues}</a>
         <a className="btn btn-primary" href="#apply" onClick={apply}>{t.apply}</a>
       </nav>
