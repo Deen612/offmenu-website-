@@ -15,10 +15,10 @@ export function DiscoveryPreview() {
   const results = rank(prefs);
 
   return (
-    <section className="section" id="discover" aria-labelledby="discover-h">
+    <section className="section cream" id="discover" aria-labelledby="discover-h">
       <div className="container">
-        <div className="section-head reveal">
-          <p className="eyebrow">{t.eyebrow}</p>
+        <div className="section-head">
+          <p className="label">{t.eyebrow}</p>
           <h2 className="h2" id="discover-h">{t.h2}</h2>
           <p className="lede">{t.body}</p>
         </div>

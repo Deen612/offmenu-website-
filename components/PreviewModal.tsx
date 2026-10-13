@@ -31,7 +31,7 @@ const NOTES: Record<PreviewTab, { h: string; p: string }> = {
   },
   passport: {
     h: "A record of where you’ve been",
-    p: "Visits, saved places and neighbourhood challenges, kept together. Tap a stamp to change the demonstration progress.",
+    p: "Visits, saved places and challenges in one place. Tap a stamp to change the demo progress.",
   },
 };
 
@@ -228,7 +228,7 @@ function PassportScreen() {
   const p = copy.passport;
   return (
     <>
-      <ScreenTop title="Your passport" sub={p.preview} />
+      <ScreenTop title="Your passport" sub="Demo" />
       <div className="screen-pad">
         <div className="segmented" role="group" aria-label="Passport list">
           <button className="chip" aria-pressed={view === "visited"} onClick={() => setView("visited")}>Visited</button>
@@ -236,12 +236,12 @@ function PassportScreen() {
         </div>
         {view === "visited" ? (
           <div className="specimen">
-            <span className="h3" style={{ fontSize: 22 }}>{p.challenge}</span>
+            <span className="h3" style={{ fontSize: 22 }}>{p.challenges[0].title}</span>
             <div className="progress" role="progressbar" aria-valuemin={0} aria-valuemax={3} aria-valuenow={visited} aria-label={`${visited} of 3 visited`}>
               <span style={{ width: `${(visited / 3) * 100}%` }} />
             </div>
             <span className="meta" aria-live="polite">
-              {visited} of 3 visited · {p.badge} {visited === 3 ? "earned (demonstration)" : "locked"}
+              {visited} of 3 visited · {p.challenges[0].badge} {visited === 3 ? "earned (demo)" : "locked"}
             </span>
             <div className="stamp-row">
               {[1, 2, 3].map((n) => (

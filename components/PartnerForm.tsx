@@ -9,7 +9,7 @@ type Status = "idle" | "sending" | "saved" | "failed" | "unconfigured";
 
 export function PartnerForm({ configured }: { configured: boolean }) {
   const t = copy.partner;
-  const w = copy.waitlist;
+  const w = { optional: "(optional)", emailError: copy.apply.emailError, submitting: copy.apply.submitting, failure: copy.apply.failure };
   const [status, setStatus] = useState<Status>(configured ? "idle" : "unconfigured");
   const [errors, setErrors] = useState<Partial<Record<Field, boolean>>>({});
   const inFlight = useRef(false);
@@ -103,7 +103,7 @@ export function PartnerForm({ configured }: { configured: boolean }) {
       </button>
       {status === "failed" && <p className="status bad" role="status">{w.failure}</p>}
       {status === "unconfigured" && (
-        <p className="status bad" role="status">Venue registration isn’t available yet. Please check back soon.</p>
+        <p className="status bad" role="status">{t.unconfigured}</p>
       )}
     </form>
   );

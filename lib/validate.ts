@@ -26,7 +26,16 @@ export function isWebsite(raw: string): boolean {
   }
 }
 
-export type WaitlistInput = { email: string; city: string; consent: boolean; source: string };
+import { isQuizAnswers, type QuizAnswers } from "../content/quiz.ts";
+
+export type WaitlistInput = {
+  email: string;
+  city: string;
+  consent: boolean;
+  source: string;
+  taste: QuizAnswers | null;
+  ref: string;
+};
 export type WaitlistErrors = Partial<Record<"email" | "consent", true>>;
 
 export function validateWaitlist(body: unknown): { input: WaitlistInput; errors: WaitlistErrors } {
@@ -36,6 +45,8 @@ export function validateWaitlist(body: unknown): { input: WaitlistInput; errors:
     city: cleanText(b.city, 80),
     consent: b.consent === true,
     source: cleanText(b.source, 40) || "homepage",
+    taste: isQuizAnswers(b.taste) ? b.taste : null,
+    ref: /^[a-z0-9]{6,12}$/.test(String(b.ref ?? "")) ? String(b.ref) : "",
   };
   const errors: WaitlistErrors = {};
   if (!isEmail(input.email)) errors.email = true;

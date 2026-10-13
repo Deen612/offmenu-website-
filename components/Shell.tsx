@@ -5,8 +5,9 @@ import { copy } from "@/content/copy";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { DiscoveryPreview } from "./DiscoveryPreview";
-import { BrandStory, Collections, FAQ, Footer, PartnerStrip, Planned } from "./Sections";
-import { Signup } from "./Signup";
+import { BrandStory, Collections, FAQ, Footer, Offers, PartnerStrip } from "./Sections";
+import { Apply } from "./Apply";
+import { Passport } from "./Passport";
 import { Vetted } from "./Vetted";
 import { Modal } from "./Modal";
 import { PartnerForm } from "./PartnerForm";
@@ -20,18 +21,16 @@ type Open =
 
 export function Shell({ configured }: { configured: boolean }) {
   const [open, setOpen] = useState<Open>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
+  const applyRef = useRef<HTMLElement>(null);
 
   const ui = useMemo(
     () => ({
       openPreview: (tab: PreviewTab, opener: HTMLElement | null = null, venueId?: string) =>
         setOpen({ kind: "preview", tab, venueId, opener }),
       openPartner: (opener: HTMLElement | null = null) => setOpen({ kind: "partner", opener }),
-      goToWaitlist: () => {
-        document.getElementById("waitlist")?.scrollIntoView({ block: "start" });
-        // Focus without a second jump; the scroll above already placed the form.
-        setTimeout(() => emailRef.current?.focus({ preventScroll: true }), 300);
-        history.replaceState(null, "", "#waitlist");
+      goToApply: () => {
+        applyRef.current?.scrollIntoView({ block: "start" });
+        setTimeout(() => applyRef.current?.querySelector<HTMLElement>("input, button.option")?.focus({ preventScroll: true }), 400);
       },
     }),
     [],
@@ -68,12 +67,13 @@ export function Shell({ configured }: { configured: boolean }) {
       <main id="main">
         <Hero />
         <Vetted />
+        <Apply ref={applyRef} configured={configured} />
         <DiscoveryPreview />
+        <Passport />
         <Collections />
         <BrandStory />
-        <Planned />
+        <Offers />
         <FAQ />
-        <Signup ref={emailRef} configured={configured} />
         <PartnerStrip />
       </main>
       <Footer />

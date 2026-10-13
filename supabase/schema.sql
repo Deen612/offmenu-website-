@@ -11,6 +11,10 @@ create table if not exists public.waitlist_signups (
   source           text        not null default 'homepage',
   consent_at       timestamptz not null,
   consent_version  text        not null,
+  taste            jsonb,
+  persona          text,
+  referral_code    text        not null unique,
+  referred_by      text,
   created_at       timestamptz not null default now()
 );
 
@@ -26,3 +30,8 @@ create table if not exists public.partner_interest (
 
 alter table public.waitlist_signups enable row level security;
 alter table public.partner_interest enable row level security;
+
+-- Who brought the most friends, for deciding invite order:
+--   select s.email, count(r.id) as friends
+--   from waitlist_signups s left join waitlist_signups r on r.referred_by = s.referral_code
+--   group by s.email order by friends desc;

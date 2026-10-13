@@ -48,3 +48,15 @@ test("each control changes something visible", () => {
 test("specimen places are labelled as examples", () => {
   assert.ok(venues.every((v) => v.name.startsWith("Example ")));
 });
+
+import { isQuizAnswers, personaFor } from "../content/quiz.ts";
+
+test("quiz answers are validated like the app", () => {
+  const ok = { q1_energy: "quiet", q2_priorities: ["discovery", "atmosphere"], q3_novelty: "unexpected", q4_dealbreaker: "generic" };
+  assert.ok(isQuizAnswers(ok));
+  assert.ok(!isQuizAnswers({ ...ok, q2_priorities: ["discovery", "discovery"] }));
+  assert.ok(!isQuizAnswers({ ...ok, q2_priorities: ["discovery"] }));
+  assert.ok(!isQuizAnswers({ ...ok, q1_energy: "loud" }));
+  assert.equal(personaFor(ok as never), "cartographer");
+  assert.equal(personaFor({ ...ok, q1_energy: "buzzing", q2_priorities: ["value", "product"], q3_novelty: "familiar" } as never), "regular");
+});

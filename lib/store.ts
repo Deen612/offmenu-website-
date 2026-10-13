@@ -16,6 +16,10 @@ export type WaitlistRecord = {
   source: string;
   consent_at: string;
   consent_version: string;
+  taste: unknown;
+  persona: string | null;
+  referral_code: string;
+  referred_by: string | null;
 };
 
 export type PartnerRecord = {

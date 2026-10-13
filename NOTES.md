@@ -10,6 +10,14 @@
 
 6. **Revision 3.** Positioning moved to vetting: every place is visited by the team before it's listed, and the visit notes feed the matching. New section "No listing without a visit" after the hero, plus a FAQ entry defining "vetted". Photos are the founder's five supplied images in `public/photos/` (source and licence to confirm before launch). The Unsplash download step is removed.
 
+7. **Revision 4.** Supplied logo traced to SVG (`components/Logo.tsx`). Type is Archivo (heavy, lower-case headings to match the wordmark) with IBM Plex Mono labels. All copy rewritten. The waitlist is now a Dorsia-style apply flow: city, the app's four taste questions (word-for-word from `off-menu`), persona reveal, email, then a referral link. Saves `taste`, `persona`, `referral_code`, `referred_by` (run the updated `supabase/schema.sql`). New interactive passport demo: three challenges, stamps, badges and four levels.
+
+### Promises this copy makes (keep them or change the words)
+- A venue can't pay to be listed; offers never change rankings.
+- Every listing starts with an in-person visit.
+- Friends brought via referral link are counted and the top referrers get invites first (query in `supabase/schema.sql`).
+- The email list is used for the city-launch invite.
+
 ## Verified (production build, `SIGNUP_STORE=file`, Chromium)
 
 - Layout at 1440×900: container 1312, hero columns 644, hero 640 high starting at y=113 (header 88 + 1 px border + 24), collection cards 421.33. At 390: container 350, photo 420 high, primary CTA ends at y=533 so it's visible before the photo. At 360: container 320. No horizontal scroll at any of the six viewports. One H1.
