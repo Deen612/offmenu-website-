@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { copy } from "@/content/copy";
-import { defaultPrefs, rank, sampleRequests, venues, type Prefs } from "@/content/fixtures";
+import { DEMO_DISCLAIMER, areas, defaultPrefs, rank, sampleRequests, venues, type Prefs } from "@/content/fixtures";
 import { Controls } from "./Controls";
 import { Modal } from "./Modal";
 import { Photo } from "./Photo";
@@ -13,26 +13,11 @@ import { useSaved } from "./useSaved";
 const TABS: PreviewTab[] = ["feed", "search", "venue", "offer", "passport"];
 
 const NOTES: Record<PreviewTab, { h: string; p: string }> = {
-  feed: {
-    h: "A feed for your area, without typing",
-    p: "The planned app opens on places near the area you choose, ordered by your saved preferences. Change the controls to see the example order change.",
-  },
-  search: {
-    h: "Describe the visit, and the controls follow",
-    p: "In the planned app, AI will turn a request into preferences and help order eligible places. Here, each sample request sets the controls by a fixed rule. Nothing is generated.",
-  },
-  venue: {
-    h: "Only what we know about a place",
-    p: "Venue pages show the facts we hold and say plainly when something is unknown, rather than guessing.",
-  },
-  offer: {
-    h: "Terms before you go",
-    p: "Participating venues will set their own offers. Each one will list the eligible items, times and restrictions before you claim it.",
-  },
-  passport: {
-    h: "A record of where you’ve been",
-    p: "Visits, saved places and challenges in one place. Tap a stamp to change the demo progress.",
-  },
+  feed: { h: "opens on your area.", p: "No typing. Your list, ranked." },
+  search: { h: "or just ask.", p: "Say what you want. The list follows." },
+  venue: { h: "what we know. what we don’t.", p: "Unchecked facts say so." },
+  offer: { h: "terms first.", p: "Every offer shows the small print up front." },
+  passport: { h: "every visit counts.", p: "Stamps, challenges, badges." },
 };
 
 export function PreviewModal({
@@ -120,7 +105,7 @@ function ScreenTop({ title, sub }: { title: string; sub: string }) {
 function FeedScreen({ prefs, setPrefs, onOpen }: { prefs: Prefs; setPrefs: (p: Prefs) => void; onOpen: (id: string) => void }) {
   return (
     <>
-      <ScreenTop title="Example area" sub="Nearby · illustrative results" />
+      <ScreenTop title={areas.find((a) => a.id === prefs.area)?.label ?? "London"} sub="Nearby · demo" />
       <div className="screen-pad">
         <Controls prefs={prefs} onChange={setPrefs} />
         <Results results={rank(prefs)} onOpen={(id) => onOpen(id)} />
@@ -148,7 +133,7 @@ function SearchScreen({
       <div className="screen-pad">
         <div className="samples">
           {sampleRequests.map((s) => (
-            <button key={s.label} className="link" aria-pressed={request === s.label} onClick={() => setRequest(s.label, s.prefs)}>
+            <button key={s.label} className="link" aria-pressed={request === s.label} onClick={() => setRequest(s.label, { ...prefs, ...s.prefs })}>
               “{s.label}”
             </button>
           ))}
@@ -170,30 +155,26 @@ function SearchScreen({
 function VenueScreen({ id }: { id: string }) {
   const v = venues.find((x) => x.id === id) ?? venues[0];
   const { saved, toggle } = useSaved();
+  const area = areas.find((a) => a.id === v.area)?.label;
   return (
     <>
-      <Photo name={v.image} sizes="390px" />
+      <div className="venue-head">
+        <span className="label">{v.kind === "cafe" ? "Café" : "Restaurant"} · {area} · {v.price}</span>
+        <span className="venue-name">{v.name}</span>
+        <span>{v.knownFor} · {v.neighbourhood}</span>
+      </div>
       <div className="screen-pad">
-        <div className="screen-card">
-          <span className="meta">{v.kind === "cafe" ? "Café" : "Restaurant"} · {v.neighbourhood} · {v.price}</span>
-          <span className="h3" style={{ fontSize: 24, lineHeight: "28px" }}>{v.name}</span>
-          <p className="muted">“{v.excerpt}” <span className="meta">Example editorial note</span></p>
-        </div>
-        <div>
-          <p className="field-label">What to order</p>
-          <p>{v.order}</p>
-        </div>
         <dl className="facts">
           {v.facts.map((f) => (
             <div key={f.label}>
               <dt>{f.label}</dt>
-              <dd className={f.value ? "" : "unknown"}>{f.value ?? "Not known yet"}</dd>
+              <dd className={f.value ? "" : "unknown"}>{f.value ?? "Not visited yet"}</dd>
             </div>
           ))}
         </dl>
-        <p className="meta">Allergen information is provided by the venue. Confirm preparation and cross-contamination directly.</p>
+        <p className="meta">{DEMO_DISCLAIMER}</p>
         <button className="btn btn-ghost" aria-pressed={saved.includes(v.id)} onClick={() => toggle(v.id)}>
-          {saved.includes(v.id) ? "Saved" : "Save this place"}
+          {saved.includes(v.id) ? "Saved" : "Save"}
         </button>
       </div>
     </>

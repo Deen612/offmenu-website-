@@ -5,7 +5,7 @@ import { copy } from "@/content/copy";
 import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { DiscoveryPreview } from "./DiscoveryPreview";
-import { BrandStory, Collections, FAQ, Footer, Offers, PartnerStrip } from "./Sections";
+import { Collections, FAQ, Footer, PartnerStrip } from "./Sections";
 import { Apply } from "./Apply";
 import { Passport } from "./Passport";
 import { Vetted } from "./Vetted";
@@ -67,12 +67,10 @@ export function Shell({ configured }: { configured: boolean }) {
       <main id="main">
         <Hero />
         <Vetted />
-        <Apply ref={applyRef} configured={configured} />
+        <Collections />
         <DiscoveryPreview />
         <Passport />
-        <Collections />
-        <BrandStory />
-        <Offers />
+        <Apply ref={applyRef} configured={configured} />
         <FAQ />
         <PartnerStrip />
       </main>

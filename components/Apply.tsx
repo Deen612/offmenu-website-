@@ -126,7 +126,7 @@ export const Apply = forwardRef<HTMLElement, { configured: boolean }>(function A
           {step < 7 && (
             <div className="apply-progress">
               <span className="label">
-                {t.step} {Math.min(step + 1, TOTAL + 1)} {t.of} {TOTAL + 1}
+                {Math.min(step + 1, TOTAL + 1)} {t.of} {TOTAL + 1}
               </span>
               <span className="bar" aria-hidden="true">
                 <span style={{ width: `${((step + 1) / (TOTAL + 1)) * 100}%` }} />

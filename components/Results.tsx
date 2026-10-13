@@ -2,41 +2,43 @@
 
 import { copy } from "@/content/copy";
 import type { Result } from "@/content/fixtures";
-import { Photo } from "./Photo";
 import { useSaved } from "./useSaved";
 
+/** Matches set like a menu: name, dotted leader, price. No photos of real places. */
 export function Results({ results, onOpen }: { results: Result[]; onOpen?: (id: string, el: HTMLElement) => void }) {
   const { saved, toggle } = useSaved();
   const t = copy.discover;
   return (
-    <ol className="results" aria-live="polite">
-      {results.map((r) => {
+    <ol className="menu" aria-live="polite">
+      {results.map((r, i) => {
         const isSaved = saved.includes(r.venue.id);
         return (
-          <li className="result" key={r.venue.id}>
-            <Photo name={r.venue.image} sizes="200px" />
-            <div className="result-body">
-              {r.top && <span className="result-top">Top match</span>}
-              {onOpen ? (
-                <button
-                  className="result-title"
-                  style={{ background: "none", border: 0, padding: 0, textAlign: "left", cursor: "pointer" }}
-                  onClick={(e) => onOpen(r.venue.id, e.currentTarget)}
-                >
-                  {r.venue.name}
-                </button>
-              ) : (
-                <span className="result-title">{r.venue.name}</span>
-              )}
-              <span className="meta">
-                {r.venue.kind === "cafe" ? "Café" : "Restaurant"} · {r.venue.neighbourhood} · {r.venue.price}
-              </span>
-              <span>{r.reason}</span>
-              <button className="save-btn" aria-pressed={isSaved} onClick={() => toggle(r.venue.id)}>
-                {isSaved ? t.saved : t.save}
-                <span className="sr-only"> {r.venue.name}</span>
-              </button>
+          <li className="menu-row" key={r.venue.id}>
+            <span className="menu-num label">{String(i + 1).padStart(2, "0")}</span>
+            <div className="menu-main">
+              <div className="menu-line">
+                {onOpen ? (
+                  <button className="menu-name" onClick={(e) => onOpen(r.venue.id, e.currentTarget)}>
+                    {r.venue.name}
+                  </button>
+                ) : (
+                  <span className="menu-name">{r.venue.name}</span>
+                )}
+                <span className="menu-dots" aria-hidden="true" />
+                <span className="menu-price">{r.venue.price}</span>
+              </div>
+              <p className="menu-meta">
+                {r.venue.knownFor} · {r.venue.neighbourhood}
+                {r.nearby ? " · nearby" : ""}
+              </p>
+              <p className="menu-why">
+                {r.top && <span className="pill">Top match</span>} {r.reason}
+              </p>
             </div>
+            <button className="save-btn" aria-pressed={isSaved} onClick={() => toggle(r.venue.id)}>
+              {isSaved ? t.saved : t.save}
+              <span className="sr-only"> {r.venue.name}</span>
+            </button>
           </li>
         );
       })}

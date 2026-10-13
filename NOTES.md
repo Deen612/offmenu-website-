@@ -18,6 +18,8 @@
 - Friends brought via referral link are counted and the top referrers get invites first (query in `supabase/schema.sql`).
 - The email list is used for the city-launch invite.
 
+8. **Revision 5.** Copy cut to a line or two per section. Page trimmed to: hero, how it works, lists, London demo, passport, request access, FAQ, venues. Demo uses real, well-known London places (founder's call). Safeguards: no photo is ever shown next to a real venue name, no facts are stated beyond name, area and what the place is known for, every unchecked fact shows "Not visited yet", and a disclaimer says Off Menu hasn't reviewed them and has no link with them. Remove the real names before public launch unless each venue agrees.
+
 ## Verified (production build, `SIGNUP_STORE=file`, Chromium)
 
 - Layout at 1440×900: container 1312, hero columns 644, hero 640 high starting at y=113 (header 88 + 1 px border + 24), collection cards 421.33. At 390: container 350, photo 420 high, primary CTA ends at y=533 so it's visible before the photo. At 360: container 320. No horizontal scroll at any of the six viewports. One H1.

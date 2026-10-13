@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { copy } from "@/content/copy";
 import type { ImageKey } from "@/content/images";
+import { venues, type Occasion } from "@/content/fixtures";
 import { Logo } from "./Logo";
 import { Photo } from "./Photo";
 import { useUI } from "./ui";
@@ -27,7 +28,9 @@ export function Collections() {
               >
                 <Photo name={c.key as ImageKey} className="ratio-43" />
                 <span className="h3">{c.title}</span>
-                <span className="muted">{c.body}</span>
+                <span className="label">
+                  {venues.filter((v) => v.fit[c.body as Occasion] >= 2).length} places · London demo
+                </span>
               </button>
             </li>
           ))}

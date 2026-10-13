@@ -1588,3 +1588,209 @@ a {
     transition-duration: 1ms !important;
   }
 }
+
+/* ---------- Revision 5 ---------- */
+
+/* Matches set like a menu card */
+.menu {
+  border-top: 1px solid var(--ink);
+}
+.menu-row {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  gap: 12px 16px;
+  align-items: start;
+  padding-block: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.menu-row > * {
+  min-width: 0;
+}
+.menu-num {
+  padding-top: 6px;
+}
+.menu-main {
+  display: grid;
+  gap: 4px;
+}
+.menu-line {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.menu-name {
+  font-family: var(--display);
+  font-weight: 760;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  min-height: 32px;
+}
+button.menu-name:hover {
+  color: var(--accent);
+}
+.menu-dots {
+  flex: 1;
+  min-width: 16px;
+  border-bottom: 2px dotted #b9b0a5;
+  transform: translateY(-5px);
+}
+.menu-price {
+  font-family: var(--mono);
+  font-size: 15px;
+}
+.menu-meta {
+  font-size: 15px;
+  color: var(--muted);
+}
+.menu-why {
+  font-size: 15px;
+}
+.pill {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-right: 6px;
+  vertical-align: 2px;
+}
+.menu-row .save-btn {
+  padding-top: 2px;
+}
+@media (min-width: 768px) {
+  .menu-name {
+    font-size: 30px;
+  }
+}
+.discover-foot {
+  display: grid;
+  gap: 16px;
+  justify-items: start;
+  margin-top: 28px;
+}
+.discover-panel {
+  background: transparent;
+  padding: 0;
+}
+@media (min-width: 1024px) {
+  .discover-panel {
+    padding: 0;
+    grid-template-columns: 4fr 8fr;
+    gap: 64px;
+  }
+}
+
+/* App venue screen without photos of real places */
+.venue-head {
+  background: var(--ink);
+  color: var(--on-dark);
+  padding: 48px 20px 24px;
+  display: grid;
+  gap: 8px;
+}
+.venue-head .label {
+  color: var(--on-dark-muted);
+}
+.venue-name {
+  font-family: var(--display);
+  font-weight: 760;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+/* How it works: one tight dark band */
+.vetted .vetted-step {
+  padding-block: 24px;
+}
+@media (min-width: 1024px) {
+  .vetted-grid {
+    grid-template-columns: 6fr 6fr;
+    align-items: end;
+  }
+}
+
+/* Lists: Opulist-style photo grid, titles under the photo */
+.collection .photo {
+  aspect-ratio: 3 / 4;
+}
+.collection .h3 {
+  font-size: 32px;
+}
+
+/* Request access: the dark, members'-club moment */
+.apply {
+  background: var(--ink);
+  color: var(--on-dark);
+}
+.apply .label,
+.apply .lede {
+  color: var(--on-dark-muted);
+}
+.apply .apply-card {
+  background: #1f1d1a;
+  border-radius: 20px;
+}
+.apply .option {
+  background: transparent;
+  border-color: var(--dark-line);
+  color: var(--on-dark);
+}
+.apply .option:hover {
+  border-color: var(--on-dark);
+}
+.apply .option[aria-pressed="true"] {
+  background: var(--on-dark);
+  color: var(--ink);
+  border-color: var(--on-dark);
+}
+.apply .btn-primary {
+  background: var(--on-dark);
+  color: var(--ink);
+}
+.apply .btn-primary:hover {
+  background: #fff;
+}
+.apply .input {
+  background: transparent;
+  border-color: #4a443e;
+  color: var(--on-dark);
+}
+.apply .bar {
+  background: var(--dark-line);
+}
+.apply .bar > span {
+  background: #d39579;
+}
+.apply .persona-name {
+  color: #d39579;
+}
+.apply .status {
+  background: transparent;
+  color: var(--on-dark);
+}
+.apply .error {
+  color: #ff9c8a;
+}
+.apply .refer {
+  border-color: var(--dark-line);
+}
+.apply .muted {
+  color: var(--on-dark-muted);
+}
+.apply .link:hover {
+  color: #d39579;
+}
+.apply :focus-visible {
+  outline-color: var(--on-dark);
+}
