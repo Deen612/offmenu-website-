@@ -8,6 +8,8 @@
 4. **Photos** come from Unsplash (free licence) rather than original shoots. See below.
 5. **Revision 2 (founder feedback).** Fonts changed to Instrument Serif (headings) and Geist (body). Hero photo now takes 7/12 of the width; collections use one tall lead image beside two stacked; the Cafes Globally story is a full-width photo with the text laid over its lower edge and now sits before offers/passport; offers and passport each lead with a photo. The brief's 50/50 hero and three-equal-card measurements no longer apply.
 
+6. **Revision 3.** Positioning moved to vetting: every place is visited by the team before it's listed, and the visit notes feed the matching. New section "No listing without a visit" after the hero, plus a FAQ entry defining "vetted". Photos are the founder's five supplied images in `public/photos/` (source and licence to confirm before launch). The Unsplash download step is removed.
+
 ## Verified (production build, `SIGNUP_STORE=file`, Chromium)
 
 - Layout at 1440×900: container 1312, hero columns 644, hero 640 high starting at y=113 (header 88 + 1 px border + 24), collection cards 421.33. At 390: container 350, photo 420 high, primary CTA ends at y=533 so it's visible before the photo. At 360: container 320. No horizontal scroll at any of the six viewports. One H1.

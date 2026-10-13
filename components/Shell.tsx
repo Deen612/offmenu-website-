@@ -7,6 +7,7 @@ import { Hero } from "./Hero";
 import { DiscoveryPreview } from "./DiscoveryPreview";
 import { BrandStory, Collections, FAQ, Footer, PartnerStrip, Planned } from "./Sections";
 import { Signup } from "./Signup";
+import { Vetted } from "./Vetted";
 import { Modal } from "./Modal";
 import { PartnerForm } from "./PartnerForm";
 import { PreviewModal } from "./PreviewModal";
@@ -66,6 +67,7 @@ export function Shell({ configured }: { configured: boolean }) {
       <Header />
       <main id="main">
         <Hero />
+        <Vetted />
         <DiscoveryPreview />
         <Collections />
         <BrandStory />

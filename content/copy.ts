@@ -8,7 +8,7 @@ export const copy = {
   meta: {
     title: "Off Menu | Cafés and Restaurants for Your Taste",
     description:
-      "Off Menu is building personalized café and restaurant discovery, with nearby recommendations, planned partner offers and a visit passport. Join the waitlist.",
+      "Every café and restaurant on Off Menu is visited and vetted by our team, then matched to your taste. From the people behind Cafes Globally. Join the waitlist.",
     socialTitle: "Off Menu | Find your next café or restaurant",
     socialDescription:
       "Nearby recommendations around your taste. From the team behind Cafes Globally. Join the Off Menu waitlist.",
@@ -26,17 +26,37 @@ export const copy = {
 
   hero: {
     label: "From the team behind Cafes Globally · In development",
-    h1: "The places Cafes Globally would send you, sorted for",
+    h1: "Every place visited first. Then matched to",
     h1Em: "your taste.",
-    body: "Off Menu is being built to recommend places nearby based on what you like, what you want to spend and what you’re in the mood for.",
+    body: "Off Menu lists only cafés and restaurants our team has been to and vetted. What we note on each visit, from noise to seating to what to order, is what the app matches against what you like.",
     primary: "Join the waitlist",
     secondary: "See the preview",
     panelLabel: "Product preview",
     panelArea: "Example area",
   },
 
+  vetted: {
+    eyebrow: "01 · How a place gets on Off Menu",
+    h2: "No listing without a visit.",
+    lede: "Most apps list every place with a postcode and let reviews sort it out. We go the other way: someone from our team visits first, and a place only appears if it’s worth the trip.",
+    steps: [
+      {
+        title: "We visit",
+        body: "An editor goes in person, orders, sits down and stays a while. Paid placement can’t buy a listing.",
+      },
+      {
+        title: "We record what matters",
+        body: "How loud it gets, where the plugs are, whether the tables suit two or eight, what’s worth ordering. Anything we couldn’t check is marked unknown, never guessed.",
+      },
+      {
+        title: "Those notes drive your matches",
+        body: "Recommendations are built from our visit notes and your preferences, not star averages. Tell us how a visit went and your next matches change.",
+      },
+    ],
+  },
+
   discover: {
-    eyebrow: "01 · Recommendations",
+    eyebrow: "02 · Recommendations",
     h2: "Find somewhere for today.",
     body: "Choose a quiet café to work in or find dinner for two within your budget. We’re building Off Menu to recommend places around those preferences, with AI helping choose which cafés and restaurants to show.",
     previewLabel: "Product preview. Example places and results.",
@@ -55,7 +75,7 @@ export const copy = {
   },
 
   collections: {
-    eyebrow: "02 · Collections",
+    eyebrow: "03 · Collections",
     h2: "Plan your next coffee or dinner.",
     items: [
       { key: "work", title: "Coffee and somewhere to work", body: "Cafés for coffee and time with your laptop." },
@@ -108,7 +128,11 @@ export const copy = {
       },
       {
         q: "How will recommendations work?",
-        a: "We plan to combine your preferences, search requests and feedback with information about nearby cafés and restaurants. AI will help interpret what you’re looking for and rank eligible places from our selected database.",
+        a: "Every place on Off Menu is visited and vetted by our team first, and each visit is written up in the same detail: noise, seating, plugs, price, what to order. The app combines those notes with your preferences, search requests and feedback. AI helps interpret what you’re after and rank the vetted places; it can’t add a place we haven’t visited.",
+      },
+      {
+        q: "What does “vetted” mean?",
+        a: "Someone from our team has been there in person, and the place met our bar for the coffee or food and the room. A venue can’t pay to be listed, and an offer never changes where a place appears in your matches.",
       },
       {
         q: "Will I have to search every time?",
@@ -169,7 +193,7 @@ export const copy = {
     wordmark: "OFF MENU",
     line: "Café and restaurant discovery.",
     attribution: "From the team behind Cafes Globally.",
-    photos: "Photographs from Unsplash, used under the Unsplash License. Pictured places are not Off Menu partners.",
+    photos: "Photographs are placeholders for this preview. Pictured places are not Off Menu partners.",
   },
 
   modal: {

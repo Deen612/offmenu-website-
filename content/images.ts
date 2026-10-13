@@ -1,12 +1,8 @@
-// Café and restaurant photographs from Unsplash, free under the Unsplash
-// License (https://unsplash.com/license). scripts/fetch-images.mjs copies
-// them into public/images/ before each build; if a copy is missing the page
-// loads the photo straight from Unsplash's CDN, and if that fails too a
-// plain colour block shows instead.
-//
+// Placeholder photographs supplied by the founder for the prelaunch build.
+// Source and licence not yet recorded: confirm both, or replace with original
+// Off Menu / Cafes Globally photography, before the site goes public.
 // None of the pictured places is an Off Menu partner, so no photo is shown
 // next to a name that could be read as the place in the picture.
-// Replace with original Off Menu / Cafes Globally photography before launch.
 
 export type ImageKey =
   | "hero"
@@ -19,9 +15,7 @@ export type ImageKey =
   | "counter";
 
 export type SiteImage = {
-  file: string;
-  /** Unsplash CDN photo id, used as https://images.unsplash.com/<id> */
-  photo: string;
+  src: string;
   width: number;
   height: number;
   alt: string;
@@ -29,73 +23,49 @@ export type SiteImage = {
   tone: string;
 };
 
-export const images: Record<ImageKey, SiteImage> = {
-  hero: {
-    file: "hero-interior.jpg",
-    photo: "photo-1554118811-1e0d58224f24",
-    width: 1800,
-    height: 1350,
-    alt: "Inside a café, with tables and chairs in daylight",
-    tone: "#B89F86",
-  },
-  work: {
-    file: "work-cafe.jpg",
-    photo: "photo-1521017432531-fbd92d768814",
-    width: 1200,
-    height: 900,
-    alt: "A coffee shop with people sitting at tables",
-    tone: "#A58E78",
-  },
-  dinner: {
-    file: "dinner-table.jpg",
-    photo: "photo-1414235077428-338989a2e8c0",
-    width: 1200,
-    height: 900,
-    alt: "A restaurant table laid for dinner",
-    tone: "#4A3428",
-  },
-  neighbourhood: {
-    file: "neighbourhood.jpg",
-    photo: "photo-1445116572660-236099ec97a0",
-    width: 1200,
-    height: 900,
-    alt: "The inside of a neighbourhood café",
-    tone: "#C2AE97",
-  },
-  offer: {
-    file: "offer-venue.jpg",
-    photo: "photo-1495474472287-4d71bcdd2085",
-    width: 1600,
-    height: 1200,
-    alt: "A cup of coffee on a café table",
-    tone: "#8C6F58",
-  },
-  story: {
-    file: "editorial-story.jpg",
-    photo: "photo-1501339847302-ac426a4a7cbb",
-    width: 2000,
-    height: 1200,
-    alt: "Seating inside a café",
-    tone: "#CDBBA5",
-  },
-  candles: {
-    file: "restaurant-room.jpg",
-    photo: "photo-1517248135467-4c7edcad34c4",
-    width: 1200,
-    height: 900,
-    alt: "A restaurant dining room with set tables",
-    tone: "#5B4334",
-  },
-  counter: {
-    file: "cafe-counter.jpg",
-    photo: "photo-1559925393-8be0ec4767c8",
-    width: 1200,
-    height: 900,
-    alt: "A café counter",
-    tone: "#9C8670",
-  },
+const counter: SiteImage = {
+  src: "/photos/cafe-counter.jpg",
+  width: 1125,
+  height: 1280,
+  alt: "Two baristas behind a curved, tiled café counter with pastries in the glass case",
+  tone: "#8A4A3A",
+};
+const lounge: SiteImage = {
+  src: "/photos/bar-lounge.jpg",
+  width: 1063,
+  height: 1417,
+  alt: "A warm restaurant bar with lit shelves, leather chairs and round wooden tables",
+  tone: "#B07A4E",
+};
+const windowTable: SiteImage = {
+  src: "/photos/window-table.jpg",
+  width: 1070,
+  height: 1427,
+  alt: "A table for four by a tall window looking out over forested hills",
+  tone: "#5E5236",
+};
+const fireplace: SiteImage = {
+  src: "/photos/fireplace-lounge.jpg",
+  width: 1196,
+  height: 1595,
+  alt: "A high-ceilinged lounge with sofas facing a stone fireplace under a ring chandelier",
+  tone: "#6B5A49",
+};
+const cabin: SiteImage = {
+  src: "/photos/cabin-dining.jpg",
+  width: 1113,
+  height: 1484,
+  alt: "A log-walled dining room with plaid curtains, patterned chairs and set tables",
+  tone: "#8C6B4A",
 };
 
-export function remoteSrc(img: SiteImage, width = img.width): string {
-  return `https://images.unsplash.com/${img.photo}?auto=format&fit=crop&w=${width}&q=72`;
-}
+export const images: Record<ImageKey, SiteImage> = {
+  hero: counter,
+  work: fireplace,
+  dinner: windowTable,
+  neighbourhood: cabin,
+  offer: counter,
+  story: lounge,
+  candles: lounge,
+  counter: cabin,
+};

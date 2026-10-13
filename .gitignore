@@ -8,7 +8,6 @@ out
 next-env.d.ts
 # Competitor screenshots from the brief: reference only, not licensed for publication.
 references/
-# Photos are downloaded at build time by scripts/fetch-images.mjs.
-public/images/*.jpg
 screenshots/
 docs/brief.docx
+.snap/

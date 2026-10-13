@@ -1472,3 +1472,92 @@ section[aria-labelledby="story-h"] {
   aspect-ratio: auto;
   width: 100%;
 }
+
+/* ---------- Revision 3: vetting section, supplied photography ---------- */
+.vetted {
+  background: var(--ink);
+  color: #f2ede6;
+}
+.vetted .eyebrow,
+.vetted .muted {
+  color: #bdb4a9;
+}
+.vetted .lede {
+  color: #f2ede6;
+}
+.vetted-grid {
+  display: grid;
+  gap: 48px;
+}
+.vetted-intro {
+  display: grid;
+  gap: 20px;
+  align-content: start;
+}
+.vetted-photo {
+  aspect-ratio: 4 / 3;
+  margin-top: 16px;
+}
+.vetted-steps {
+  display: grid;
+  align-content: end;
+}
+.vetted-step {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  padding-block: 32px;
+  border-top: 1px solid #3a3631;
+}
+.vetted-step:last-child {
+  border-bottom: 1px solid #3a3631;
+}
+.vetted-step .h3 {
+  margin-bottom: 8px;
+}
+.vetted-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 48px;
+  line-height: 1;
+  color: #c98a6e;
+}
+@media (min-width: 1024px) {
+  .vetted-grid {
+    grid-template-columns: 5fr 6fr;
+    gap: 96px;
+  }
+  .vetted-step {
+    grid-template-columns: 96px 1fr;
+    padding-block: 40px;
+  }
+  .vetted-num {
+    font-size: 64px;
+  }
+}
+.vetted :focus-visible {
+  outline-color: #f2ede6;
+}
+/* Supplied photos are portrait; keep faces and counters in wide crops */
+.hero-photo img {
+  object-position: center 55%;
+}
+@media (min-width: 1280px) {
+  .hero .h1 {
+    font-size: 84px;
+    line-height: 78px;
+  }
+  .hero-text {
+    gap: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .photo-frame > .hero-photo {
+    position: absolute;
+    inset: 0;
+    min-height: 0;
+  }
+  .hero-grid {
+    min-height: 680px;
+  }
+}
