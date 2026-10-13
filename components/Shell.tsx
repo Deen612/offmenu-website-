@@ -68,8 +68,8 @@ export function Shell({ configured }: { configured: boolean }) {
         <Hero />
         <DiscoveryPreview />
         <Collections />
-        <Planned />
         <BrandStory />
+        <Planned />
         <FAQ />
         <Signup ref={emailRef} configured={configured} />
         <PartnerStrip />

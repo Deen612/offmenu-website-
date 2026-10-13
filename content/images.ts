@@ -1,11 +1,12 @@
-// Photographs used on the site. Each file is downloaded into public/images/
-// by scripts/fetch-images.mjs (it runs before every build), so the published
-// site serves its own copies and never hotlinks.
+// Café and restaurant photographs from Unsplash, free under the Unsplash
+// License (https://unsplash.com/license). scripts/fetch-images.mjs copies
+// them into public/images/ before each build; if a copy is missing the page
+// loads the photo straight from Unsplash's CDN, and if that fails too a
+// plain colour block shows instead.
 //
-// All are free under the Unsplash License (https://unsplash.com/license).
-// None of the pictured businesses is an Off Menu partner, so no photo is ever
-// shown next to a venue name that could be read as the place in the picture.
-// Replace these with original Off Menu / Cafes Globally photography before launch.
+// None of the pictured places is an Off Menu partner, so no photo is shown
+// next to a name that could be read as the place in the picture.
+// Replace with original Off Menu / Cafes Globally photography before launch.
 
 export type ImageKey =
   | "hero"
@@ -14,82 +15,87 @@ export type ImageKey =
   | "neighbourhood"
   | "offer"
   | "story"
-  | "candles";
+  | "candles"
+  | "counter";
 
 export type SiteImage = {
   file: string;
-  unsplashId: string;
+  /** Unsplash CDN photo id, used as https://images.unsplash.com/<id> */
+  photo: string;
   width: number;
-  /** Requested height is derived from the source ratio; this is for layout only. */
   height: number;
   alt: string;
-  credit: string;
-  /** Colour shown while the photo loads, or instead of it if the file is missing. */
+  /** Colour shown while the photo loads, or instead of it if it can't load. */
   tone: string;
 };
 
 export const images: Record<ImageKey, SiteImage> = {
   hero: {
     file: "hero-interior.jpg",
-    unsplashId: "VszC1eymfdI",
+    photo: "photo-1554118811-1e0d58224f24",
     width: 1800,
     height: 1350,
-    alt: "A small café with wooden chairs and tables in front of the bar",
-    credit: "Vladimir Visotsky on Unsplash",
+    alt: "Inside a café, with tables and chairs in daylight",
     tone: "#B89F86",
   },
   work: {
     file: "work-cafe.jpg",
-    unsplashId: "XLwnQaB0sEg",
+    photo: "photo-1521017432531-fbd92d768814",
     width: 1200,
     height: 900,
-    alt: "A man working on a laptop at a café table with a coffee",
-    credit: "Unsplash",
+    alt: "A coffee shop with people sitting at tables",
     tone: "#A58E78",
   },
   dinner: {
     file: "dinner-table.jpg",
-    unsplashId: "NWa1VZVPwjc",
+    photo: "photo-1414235077428-338989a2e8c0",
     width: 1200,
     height: 900,
-    alt: "Candles burning on a restaurant table in the evening",
-    credit: "Benjamin Brunner on Unsplash",
+    alt: "A restaurant table laid for dinner",
     tone: "#4A3428",
   },
   neighbourhood: {
     file: "neighbourhood.jpg",
-    unsplashId: "DemWXZBht5g",
+    photo: "photo-1445116572660-236099ec97a0",
     width: 1200,
     height: 900,
-    alt: "People walking into a café with tables outside on a cobbled street",
-    credit: "Alexis Presa on Unsplash",
+    alt: "The inside of a neighbourhood café",
     tone: "#C2AE97",
   },
   offer: {
     file: "offer-venue.jpg",
-    unsplashId: "X4RJG4aNi8o",
+    photo: "photo-1495474472287-4d71bcdd2085",
     width: 1600,
     height: 1200,
-    alt: "Coffee being poured into a white ceramic cup",
-    credit: "Brooke Cagle on Unsplash",
+    alt: "A cup of coffee on a café table",
     tone: "#8C6F58",
   },
   story: {
     file: "editorial-story.jpg",
-    unsplashId: "IaTQuvA-_oM",
-    width: 1600,
+    photo: "photo-1501339847302-ac426a4a7cbb",
+    width: 2000,
     height: 1200,
-    alt: "A café table and chairs by a window in daylight",
-    credit: "mahyar motebassem on Unsplash",
+    alt: "Seating inside a café",
     tone: "#CDBBA5",
   },
   candles: {
-    file: "candle-table.jpg",
-    unsplashId: "GszQGurX3x0",
+    file: "restaurant-room.jpg",
+    photo: "photo-1517248135467-4c7edcad34c4",
     width: 1200,
     height: 900,
-    alt: "Lit candles on a dining table",
-    credit: "Toa Heftiba on Unsplash",
+    alt: "A restaurant dining room with set tables",
     tone: "#5B4334",
   },
+  counter: {
+    file: "cafe-counter.jpg",
+    photo: "photo-1559925393-8be0ec4767c8",
+    width: 1200,
+    height: 900,
+    alt: "A café counter",
+    tone: "#9C8670",
+  },
 };
+
+export function remoteSrc(img: SiteImage, width = img.width): string {
+  return `https://images.unsplash.com/${img.photo}?auto=format&fit=crop&w=${width}&q=72`;
+}

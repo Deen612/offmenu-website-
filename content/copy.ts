@@ -26,7 +26,8 @@ export const copy = {
 
   hero: {
     label: "From the team behind Cafes Globally · In development",
-    h1: "The places Cafes Globally would send you, sorted for your taste.",
+    h1: "The places Cafes Globally would send you, sorted for",
+    h1Em: "your taste.",
     body: "Off Menu is being built to recommend places nearby based on what you like, what you want to spend and what you’re in the mood for.",
     primary: "Join the waitlist",
     secondary: "See the preview",

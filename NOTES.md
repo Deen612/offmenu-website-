@@ -6,6 +6,7 @@
 2. **Offers and passport share one section**, each with one specimen and a link into the preview, instead of two full sections. Both are unbuilt; the page now spends its space on recommendations and collections. Nav anchors `#offers` and `#passport` still land on their halves.
 3. **Waitlist promise.** Paragraph now reads "Add your city and we'll email you when Off Menu opens there. That's the email. No weekly newsletter in between." This is a commitment: don't send newsletters to this list without new consent.
 4. **Photos** come from Unsplash (free licence) rather than original shoots. See below.
+5. **Revision 2 (founder feedback).** Fonts changed to Instrument Serif (headings) and Geist (body). Hero photo now takes 7/12 of the width; collections use one tall lead image beside two stacked; the Cafes Globally story is a full-width photo with the text laid over its lower edge and now sits before offers/passport; offers and passport each lead with a photo. The brief's 50/50 hero and three-equal-card measurements no longer apply.
 
 ## Verified (production build, `SIGNUP_STORE=file`, Chromium)
 
@@ -19,7 +20,7 @@
 ## Not verified
 
 - Supabase writes. The adapter follows Supabase's REST API (201 on insert, 409 on unique violation) but there were no credentials in this session. Test one signup after adding the keys.
-- Real photos. This build machine couldn't reach Unsplash, so every screenshot here shows colour blocks. Vercel's build can reach it. Check the live site, and check that `XLwnQaB0sEg` (work café) downloaded: it may turn out to be an Unsplash+ photo, in which case pick another.
+- Real photos. Photos load from images.unsplash.com (or local copies made at build time). This build machine can't reach Unsplash, so every screenshot here shows colour blocks, and the photo IDs in `content/images.ts` were not visually checked. Any ID that fails shows a colour block; look at the live page and swap any picture that doesn't fit its alt text.
 - Lighthouse. Not run here. Run it on the deployed URL; targets are LCP ≤ 2.5 s, CLS ≤ 0.1, accessibility ≥ 95.
 - Screen reader pass. Semantics are in place (labelled dialog, tabs, disclosure buttons, field errors tied with aria-describedby) but untested with VoiceOver or NVDA.
 

@@ -1,9 +1,9 @@
 "use client";
 
-import { createContext, useContext } from "react";
-import { images, type ImageKey } from "@/content/images";
+import { createContext, useContext, useState } from "react";
+import { images, remoteSrc, type ImageKey } from "@/content/images";
 
-/** Which photos exist in public/images, worked out on the server at build time. */
+/** Which photos exist in public/images, worked out on the server. */
 export const PhotoContext = createContext<ReadonlySet<string>>(new Set());
 
 export function Photo({
@@ -19,26 +19,33 @@ export function Photo({
   sizes?: string;
   decorative?: boolean;
 }) {
-  const available = useContext(PhotoContext);
+  const local = useContext(PhotoContext);
+  const [failed, setFailed] = useState(false);
   const img = images[name];
-  const has = available.has(img.file);
+  const isLocal = local.has(img.file);
+  const src = isLocal ? `/images/${img.file}` : remoteSrc(img);
+  const srcSet = isLocal
+    ? undefined
+    : [480, 800, 1200, img.width].filter((w, i, a) => w <= img.width && a.indexOf(w) === i).map((w) => `${remoteSrc(img, w)} ${w}w`).join(", ");
   return (
     <div
       className={`photo ${className}`}
       style={{ ["--tone" as string]: img.tone }}
-      role={has || decorative ? undefined : "img"}
-      aria-label={has || decorative ? undefined : img.alt}
+      role={failed && !decorative ? "img" : undefined}
+      aria-label={failed && !decorative ? img.alt : undefined}
     >
-      {has && (
+      {!failed && (
         <img
-          src={`/images/${img.file}`}
+          src={src}
+          srcSet={srcSet}
+          sizes={srcSet ? sizes : undefined}
           alt={decorative ? "" : img.alt}
           width={img.width}
           height={img.height}
           loading={eager ? "eager" : "lazy"}
           fetchPriority={eager ? "high" : undefined}
           decoding="async"
-          sizes={sizes}
+          onError={() => setFailed(true)}
         />
       )}
     </div>

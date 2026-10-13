@@ -14,7 +14,9 @@ export function Hero() {
       <div className="container hero-grid">
         <div className="hero-text">
           <p className="eyebrow accent">{t.label}</p>
-          <h1 className="h1">{t.h1}</h1>
+          <h1 className="h1">
+            {t.h1} <em>{t.h1Em}</em>
+          </h1>
           <p className="lede">{t.body}</p>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#waitlist" onClick={(e) => { e.preventDefault(); goToWaitlist(); }}>

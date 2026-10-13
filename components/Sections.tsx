@@ -62,6 +62,7 @@ export function Planned() {
           </div>
         </article>
         <article className="planned-item reveal" id="passport" aria-labelledby="passport-h">
+          <Photo name="counter" sizes="(min-width: 1024px) 50vw, 100vw" />
           <div className="planned-copy">
             <p className="eyebrow">{p.eyebrow}</p>
             <h2 className="h2" id="passport-h">{p.h2}</h2>
@@ -90,13 +91,15 @@ export function Planned() {
 export function BrandStory() {
   const t = copy.story;
   return (
-    <section className="section" aria-labelledby="story-h">
-      <div className="container story">
-        <Photo name="story" sizes="(min-width: 1024px) 58vw, 100vw" />
+    <section aria-labelledby="story-h">
+      <div className="story">
+        <Photo name="story" className="story-photo" sizes="100vw" />
+        <div className="container story-inner">
         <div className="story-copy reveal">
           <p className="eyebrow">Cafes Globally</p>
           <h2 className="h2" id="story-h">{t.h2}</h2>
           <p className="muted">{t.body}</p>
+        </div>
         </div>
       </div>
     </section>

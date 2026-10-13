@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource/cormorant-garamond/latin-500.css";
-import "@fontsource/cormorant-garamond/latin-500-italic.css";
-import "@fontsource-variable/inter/index.css";
+import "@fontsource/instrument-serif/latin-400.css";
+import "@fontsource/instrument-serif/latin-400-italic.css";
+import "@fontsource-variable/geist/index.css";
 import "./globals.css";
 import { copy } from "@/content/copy";
 

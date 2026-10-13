@@ -10,8 +10,8 @@
   --accent-hover: #763423;
   --line: #ded7ce;
 
-  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --sans: "Inter Variable", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --sans: "Geist Variable", Geist, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --gutter: 20px;
   --gap: 16px;
@@ -1283,4 +1283,192 @@ a {
 }
 .result-title {
   min-height: 44px;
+}
+
+/* ---------- Revision 2: Instrument Serif + Geist, editorial layout ---------- */
+
+body {
+  font-synthesis: none;
+}
+.h1,
+.h2,
+.h3,
+.wordmark,
+.faq-q,
+.result-title,
+.panel-area,
+.stamp {
+  font-weight: 400;
+}
+:root {
+  --h1: 52px;
+  --h1-lh: 50px;
+  --h2: 40px;
+  --h2-lh: 40px;
+  --card: 28px;
+  --card-lh: 30px;
+}
+@media (min-width: 768px) {
+  :root {
+    --h1: 72px;
+    --h1-lh: 68px;
+    --h2: 52px;
+    --h2-lh: 52px;
+    --card: 32px;
+    --card-lh: 34px;
+  }
+}
+@media (min-width: 1280px) {
+  :root {
+    --h1: 96px;
+    --h1-lh: 88px;
+    --h2: 64px;
+    --h2-lh: 62px;
+  }
+}
+.h1 {
+  letter-spacing: -0.025em;
+}
+.h1 em,
+.h2 em {
+  font-style: italic;
+  color: var(--accent);
+}
+.h2 {
+  letter-spacing: -0.015em;
+}
+.wordmark {
+  letter-spacing: 0.06em;
+  font-size: 28px;
+}
+@media (min-width: 1024px) {
+  .wordmark {
+    font-size: 34px;
+  }
+}
+.faq-q {
+  font-size: 28px;
+  line-height: 32px;
+}
+.result-title {
+  font-size: 26px;
+  line-height: 28px;
+}
+
+/* Hero: photo takes the larger share */
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 5fr 7fr;
+    min-height: 680px;
+  }
+  .hero-text {
+    padding: 48px;
+    justify-content: flex-end;
+  }
+  .hero-photo {
+    min-height: 680px;
+  }
+}
+
+/* Collections: one tall lead image, two stacked */
+.collection .photo {
+  aspect-ratio: 4 / 3;
+}
+@media (min-width: 1024px) {
+  .collections {
+    grid-template-columns: 7fr 5fr;
+    grid-template-rows: auto auto;
+    gap: 48px 24px;
+  }
+  .collections > li:first-child {
+    grid-row: 1 / span 2;
+  }
+  .collections > li:first-child .photo {
+    aspect-ratio: auto;
+    height: 100%;
+    min-height: 560px;
+  }
+  .collections > li:first-child .collection {
+    height: 100%;
+    grid-template-rows: 1fr auto auto auto;
+  }
+  .collections > li:first-child .h3 {
+    font-size: 44px;
+    line-height: 44px;
+  }
+}
+
+/* Brand story: full-bleed photo, text panel laid over its lower edge */
+.story {
+  display: block;
+  position: relative;
+}
+.story-photo {
+  height: 70vh;
+  min-height: 420px;
+  max-height: 760px;
+}
+.story-inner {
+  position: relative;
+  margin-top: -120px;
+}
+.story-copy {
+  background: var(--bg);
+  padding: 32px 24px;
+  max-width: 640px;
+}
+@media (min-width: 768px) {
+  .story-inner {
+    margin-top: -200px;
+  }
+  .story-copy {
+    padding: 48px;
+  }
+}
+.story + * {
+  margin-top: 0;
+}
+section[aria-labelledby="story-h"] {
+  padding-bottom: var(--section);
+}
+
+/* Offers and passport: matched columns, photo first */
+.planned-item .photo {
+  aspect-ratio: 4 / 3;
+}
+@media (min-width: 1024px) {
+  .planned {
+    gap: 48px 24px;
+  }
+}
+
+/* Section heads: more air, bigger numbers */
+.section-head {
+  margin-bottom: 56px;
+}
+@media (min-width: 1024px) {
+  .section-head {
+    margin-bottom: 64px;
+  }
+}
+
+/* Images carry large intrinsic widths; never let them size their grid track. */
+.hero-grid > *,
+.discover-panel > *,
+.planned > *,
+.planned-item > *,
+.collections > *,
+.result > *,
+.screen-wrap > *,
+.signup > *,
+.photo {
+  min-width: 0;
+}
+.photo img {
+  max-width: none;
+  width: 100%;
+}
+.story .story-photo {
+  aspect-ratio: auto;
+  width: 100%;
 }
