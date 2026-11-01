@@ -2,8 +2,10 @@
 // EMAIL_FROM are set. A failed email never undoes a saved signup.
 import "server-only";
 
+// Off by default: the plan is one email at launch, sent from the admin CSV.
+// Set SEND_SIGNUP_EMAIL=true to also send a short "you're on the list" note.
 export function emailConfigured() {
-  return Boolean(process.env.RESEND_API_KEY && process.env.EMAIL_FROM);
+  return Boolean(process.env.SEND_SIGNUP_EMAIL === "true" && process.env.RESEND_API_KEY && process.env.EMAIL_FROM);
 }
 
 export async function sendConfirmation(to: string, opts: { city: string | null; inviteLink: string }) {
@@ -12,7 +14,7 @@ export async function sendConfirmation(to: string, opts: { city: string | null; 
   const text = [
     "You're on the Off Menu list.",
     "",
-    `We'll email you when Off Menu opens${where}.`,
+    `We'll email you the download link when the Off Menu app launches${where}.`,
     "",
     "Friends who join with your link move you up:",
     opts.inviteLink,

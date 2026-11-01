@@ -56,7 +56,7 @@ export default async function Admin({ searchParams }: { searchParams: Promise<{ 
 
       {!storeConfigured() && <p className="admin-warn">No store configured. Set SIGNUP_STORE=supabase and the two SUPABASE_ keys.</p>}
       {signups === null && storeConfigured() && <p className="admin-warn">Couldn’t reach the database.</p>}
-      {!emailConfigured() && <p className="admin-note">Confirmation emails are off. Set RESEND_API_KEY and EMAIL_FROM to turn them on.</p>}
+      {!emailConfigured() && <p className="admin-note">No email is sent at signup. At launch, download the CSV and send the launch email from your email tool. (Optional: SEND_SIGNUP_EMAIL=true with Resend keys sends a short confirmation.)</p>}
 
       <section className="admin-stats">
         <div><b>{rows.length}</b><span>emails</span></div>

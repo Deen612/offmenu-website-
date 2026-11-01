@@ -844,3 +844,19 @@ body {
     content: none;
   }
 }
+.mast-banner {
+  font-family: var(--menu-title);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 8px 14px;
+  margin: -8px 0 6px;
+  max-width: 100%;
+}
+.mast-perk {
+  margin: 0;
+  font-size: 18px;
+  color: var(--copper);
+}

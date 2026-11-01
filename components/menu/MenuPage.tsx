@@ -98,7 +98,7 @@ function Digestif() {
                 })}
               </div>
               <p className={`rowbadge ${full ? "won" : ""}`}>
-                {full ? "Badge: " : "Fill the row: "}
+                {full ? "Reward unlocked: " : "Fill the row to unlock: "}
                 <b>{r.badge}</b>
               </p>
             </div>
@@ -144,11 +144,13 @@ export function MenuPage({ configured }: { configured: boolean }) {
       <a className="skip" href="#card">Skip to the menu</a>
       <main className="card" id="card">
         <header className="masthead">
+          <p className="mast-banner">{m.preview}</p>
           <p className="mast-date" suppressHydrationWarning>{today}</p>
           <h1 className="mast-logo">
             <Logo className="mast-logo-svg" title="Off Menu" />
           </h1>
           <p className="mast-line">{m.line}</p>
+          <p className="mast-perk">{m.perk}</p>
           <ul className="mast-notes">
             {m.notes.map((n) => <li key={n}>{n}</li>)}
           </ul>
@@ -176,7 +178,7 @@ export function MenuPage({ configured }: { configured: boolean }) {
         <footer className="card-foot">
           <p>{menu.venues.line}</p>
           <button className="text-btn" onClick={(e) => setPartner(e.currentTarget)}>{menu.venues.cta}</button>
-          <p className="fine">Off Menu · Hand-picked cafés and restaurants · From the team behind Cafes Globally</p>
+          <p className="fine">Off Menu · Hand-picked cafés and restaurants · Deals and rewards only in the app · From the team behind Cafes Globally</p>
         </footer>
       </main>
 

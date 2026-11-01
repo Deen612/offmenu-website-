@@ -2,7 +2,7 @@
 // wordmark. NOTES.md lists the promises this copy makes, so nobody ships a
 // line the business can't keep.
 
-export const CONSENT_VERSION = "2026-10-13.v2";
+export const CONSENT_VERSION = "2026-11-01.launch-email";
 
 export const copy = {
   meta: {

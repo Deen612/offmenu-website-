@@ -139,7 +139,7 @@ export const Bill = forwardRef<HTMLElement, { configured: boolean }>(function Bi
       <div className="slip" ref={card}>
         <div className="slip-top">
           <span>Order no. {tokens ? tokens.code.toUpperCase() : "—"}</span>
-          <span>{step === 0 ? "1 of 5" : step <= 4 ? `${step + 1} of 5` : "Paid"}</span>
+          <span>{step === 0 ? "1 of 5" : step <= 4 ? `${step + 1} of 5` : "Done"}</span>
         </div>
 
         {step === 0 && (
@@ -165,11 +165,11 @@ export const Bill = forwardRef<HTMLElement, { configured: boolean }>(function Bi
             </div>
             <label className="slip-check">
               <input type="checkbox" name="consent" aria-invalid={errors.consent || undefined} aria-describedby={errors.consent ? "bill-consent-err" : undefined} />
-              <span>Email me my invite and launch news. Unsubscribe any time.</span>
+              <span>Email me when the Off Menu app launches. Unsubscribe any time.</span>
             </label>
             {errors.consent && <p className="slip-err" id="bill-consent-err">Tick the box so we can send your invite.</p>}
             <button className="menu-btn-solid" type="submit" disabled={state === "sending"}>
-              {state === "sending" ? "Saving…" : "Request access"}
+              {state === "sending" ? "Saving…" : "Get early access"}
             </button>
             {state === "duplicate" && <p className="slip-msg" role="status">You’re already on the list.</p>}
             {state === "failed" && <p className="slip-err" role="status">Didn’t save. Check your connection and try again.</p>}
@@ -188,7 +188,7 @@ export const Bill = forwardRef<HTMLElement, { configured: boolean }>(function Bi
               {q.prompt}
               {q.multi && <span className="slip-hint"> Pick two.</span>}
             </legend>
-            {step === 1 && (tokens || demo) && <p className="slip-saved">{tokens ? "You’re on the list. These tune your first list." : "Demo mode."}</p>}
+            {step === 1 && (tokens || demo) && <p className="slip-saved">{tokens ? "You’re on the list. These tune your first list in the app." : "Demo mode."}</p>}
             <ul className="slip-options">
               {q.options.map((o) => {
                 const on = q.multi ? (answers.q2_priorities ?? []).includes(o.id as Priority) : answers[q.id as keyof Answers] === o.id;
@@ -219,13 +219,14 @@ export const Bill = forwardRef<HTMLElement, { configured: boolean }>(function Bi
               <>
                 <p className="slip-persona">{persona.name}</p>
                 <p className="slip-tag">{persona.tagline}</p>
+                <p>We’ll email you the download link when the app launches. Your list will be waiting.</p>
               </>
             ) : (
-              <p>We’ll email your invite{city.trim() ? ` when we open in ${city.trim()}` : ""}.</p>
+              <p>We’ll email you the download link when the app launches.</p>
             )}
             {tokens && (
               <div className="invite">
-                <p className="slip-label">Friends who join with your link move you up</p>
+                <p className="slip-label">Friends who join with your link move you up the list</p>
                 <div className="invite-row">
                   <input id="invite-link" className="slip-input mono" readOnly value={link} aria-label="Your invite link" />
                   <button type="button" className="menu-btn-solid" onClick={copyLink}>{copied ? "Copied" : "Copy"}</button>
