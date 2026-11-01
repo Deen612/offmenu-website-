@@ -13,15 +13,15 @@ export const copy = {
   },
 
   app: {
-    eyebrow: "What members get",
-    h2: "The app, in a minute",
+    eyebrow: "",
+    h2: "What’s in the app",
     perks: [
-      { id: "list", title: "Your list", body: "Answer four questions and get a list ranked for you. Change the mood and the list changes." },
+      { id: "list", title: "Your list", body: "Four questions, then places ranked for your taste. Change the mood and the list changes." },
       { id: "place", title: "Know before you go", body: "Laptop rules, noise, bookings. If we haven’t checked, it says so." },
-      { id: "offer", title: "Member offers", body: "Perks at places on the list, like a second coffee on your first visit. Terms up front." },
-      { id: "passport", title: "Passport", body: "Log visits, finish challenges, keep the badges." },
+      { id: "offer", title: "Members-only deals", body: "Deals you only get in the app, at places on the list. Terms shown before you go." },
+      { id: "passport", title: "Rewards", body: "Log visits to collect stamps. Fill a row and unlock a reward." },
     ],
-    tryIt: "Tap around. It works.",
+    tryIt: "",
   },
 
   nav: {
@@ -29,18 +29,18 @@ export const copy = {
     app: "The app",
     passport: "Passport",
     venues: "For venues",
-    apply: "Request access",
+    apply: "Get early access",
     menu: "Menu",
     close: "Close menu",
   },
 
   hero: {
     label: "",
-    h1: "Hand-picked cafés and restaurants, matched to you.",
-    body: "Scored by our editors, ranked by your taste.",
-    primary: "Request access",
+    h1: "Cafés and restaurants, picked for your taste.",
+    body: "An app that ranks hand-picked places for you. Members get deals and rewards you won’t find anywhere else.",
+    primary: "Get early access",
     secondary: "See the app",
-    caption: "Placeholder photo",
+    caption: "",
   },
 
   vetted: {

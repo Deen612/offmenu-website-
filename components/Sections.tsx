@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { copy } from "@/content/copy";
+import { menu } from "@/content/menu";
 import type { ImageKey } from "@/content/images";
 import { venues, type Occasion } from "@/content/fixtures";
 import { Logo } from "./Logo";
@@ -78,7 +79,7 @@ export function BrandStory() {
 }
 
 export function FAQ() {
-  const t = copy.faq;
+  const t = { h2: "Questions", items: menu.smallPrint.items.map((i) => ({ q: i.q, a: i.a })) };
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="section" aria-labelledby="faq-h">

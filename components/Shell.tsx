@@ -6,7 +6,7 @@ import { Header } from "./Header";
 import { Hero } from "./Hero";
 import { AppDemo } from "./AppDemo";
 import { Collections, FAQ, Footer, PartnerStrip } from "./Sections";
-import { Apply } from "./Apply";
+import { EarlyAccess } from "./EarlyAccess";
 import { Vetted } from "./Vetted";
 import { Modal } from "./Modal";
 import { PartnerForm } from "./PartnerForm";
@@ -29,7 +29,7 @@ export function Shell({ configured }: { configured: boolean }) {
       openPartner: (opener: HTMLElement | null = null) => setOpen({ kind: "partner", opener }),
       goToApply: () => {
         applyRef.current?.scrollIntoView({ block: "start" });
-        setTimeout(() => applyRef.current?.querySelector<HTMLElement>("input, button.option")?.focus({ preventScroll: true }), 400);
+        setTimeout(() => applyRef.current?.querySelector<HTMLElement>("#bill-email")?.focus({ preventScroll: true }), 400);
       },
     }),
     [],
@@ -68,7 +68,7 @@ export function Shell({ configured }: { configured: boolean }) {
         <Collections />
         <AppDemo />
         <Vetted />
-        <Apply ref={applyRef} configured={configured} />
+        <EarlyAccess ref={applyRef} configured={configured} />
         <FAQ />
         <PartnerStrip />
       </main>

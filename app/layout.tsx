@@ -1,10 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource-variable/oswald/index.css";
-import "@fontsource/libre-caslon-text/latin-400.css";
-import "@fontsource/libre-caslon-text/latin-400-italic.css";
-import "@fontsource/libre-caslon-text/latin-700.css";
+import "@fontsource-variable/schibsted-grotesk/index.css";
+import "@fontsource/eb-garamond/latin-400.css";
+import "@fontsource/eb-garamond/latin-400-italic.css";
 import "./globals.css";
-import "./menu.css";
 import { copy } from "@/content/copy";
 
 const site = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
@@ -27,7 +25,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2b2723",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
