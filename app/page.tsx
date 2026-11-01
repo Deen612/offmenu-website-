@@ -1,10 +1,9 @@
-import { Shell } from "@/components/Shell";
+import { MenuPage } from "@/components/menu/MenuPage";
 import { storeConfigured } from "@/lib/store";
 
-// Re-evaluated on each request so the forms reflect the store configuration
-// of the running deployment, not of the machine that built it.
+// Re-evaluated on each request so the form reflects the live store configuration.
 export const dynamic = "force-dynamic";
 
 export default function Page() {
-  return <Shell configured={storeConfigured()} />;
+  return <MenuPage configured={storeConfigured()} />;
 }

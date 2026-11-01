@@ -46,7 +46,7 @@ export function validateWaitlist(body: unknown): { input: WaitlistInput; errors:
     consent: b.consent === true,
     source: cleanText(b.source, 40) || "homepage",
     taste: isQuizAnswers(b.taste) ? b.taste : null,
-    ref: /^[a-z0-9]{6,12}$/.test(String(b.ref ?? "")) ? String(b.ref) : "",
+    ref: /^[a-f0-9]{8}$|^[a-z0-9]{6,12}$/.test(String(b.ref ?? "")) ? String(b.ref) : "",
   };
   const errors: WaitlistErrors = {};
   if (!isEmail(input.email)) errors.email = true;

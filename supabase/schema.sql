@@ -15,6 +15,7 @@ create table if not exists public.waitlist_signups (
   persona          text,
   referral_code    text        not null unique,
   referred_by      text,
+  edit_token       text        not null unique,
   created_at       timestamptz not null default now()
 );
 
@@ -35,3 +36,6 @@ alter table public.partner_interest enable row level security;
 --   select s.email, count(r.id) as friends
 --   from waitlist_signups s left join waitlist_signups r on r.referred_by = s.referral_code
 --   group by s.email order by friends desc;
+
+-- If you created the table before edit_token existed, run:
+--   alter table public.waitlist_signups add column if not exists edit_token text unique;

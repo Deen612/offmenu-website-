@@ -20,6 +20,8 @@ export type WaitlistRecord = {
   persona: string | null;
   referral_code: string;
   referred_by: string | null;
+  /** Secret, returned only to the person who signed up, so they can add quiz answers later. */
+  edit_token: string;
 };
 
 export type PartnerRecord = {
@@ -107,4 +109,74 @@ export async function savePartner(record: PartnerRecord): Promise<SaveResult> {
   if (m === "supabase") return supabaseInsert("partner_interest", record);
   if (m === "file") return fileInsert("partner_interest", record);
   return "unconfigured";
+}
+
+// ---------- Updates and reads (admin, quiz answers) ----------
+
+function sb(pathAndQuery: string, init: RequestInit = {}) {
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+  return fetch(`${process.env.SUPABASE_URL!.replace(/\/$/, "")}/rest/v1/${pathAndQuery}`, {
+    ...init,
+    headers: { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json", ...(init.headers ?? {}) },
+    signal: AbortSignal.timeout(8000),
+    cache: "no-store",
+  });
+}
+
+async function fileRows(table: Table): Promise<Record<string, unknown>[]> {
+  try {
+    return JSON.parse(await readFile(path.join(dataDir, `${table}.json`), "utf8"));
+  } catch {
+    return [];
+  }
+}
+
+/** Adds quiz answers to a signup that already exists. Matched by its secret edit token. */
+export async function updateTaste(editToken: string, taste: unknown, persona: string): Promise<"saved" | "missing" | "failed" | "unconfigured"> {
+  const m = mode();
+  if (m === "supabase") {
+    try {
+      const res = await sb(`waitlist_signups?edit_token=eq.${encodeURIComponent(editToken)}`, {
+        method: "PATCH",
+        headers: { Prefer: "return=representation" },
+        body: JSON.stringify({ taste, persona }),
+      });
+      if (!res.ok) return "failed";
+      const rows = (await res.json()) as unknown[];
+      return rows.length ? "saved" : "missing";
+    } catch {
+      return "failed";
+    }
+  }
+  if (m === "file") {
+    const run = fileQueue.then(async () => {
+      const rows = await fileRows("waitlist_signups");
+      const row = rows.find((r) => r.edit_token === editToken);
+      if (!row) return "missing" as const;
+      Object.assign(row, { taste, persona });
+      await writeFile(path.join(dataDir, "waitlist_signups.json"), JSON.stringify(rows, null, 2));
+      return "saved" as const;
+    });
+    fileQueue = run.catch(() => {});
+    try {
+      return await run;
+    } catch {
+      return "failed";
+    }
+  }
+  return "unconfigured";
+}
+
+export async function listRows(table: Table): Promise<Record<string, unknown>[] | null> {
+  const m = mode();
+  if (m === "supabase") {
+    try {
+      const res = await sb(`${table}?select=*&order=created_at.desc&limit=50000`);
+      return res.ok ? ((await res.json()) as Record<string, unknown>[]) : null;
+    } catch {
+      return null;
+    }
+  }
+  if (m === "file") return (await fileRows(table)).reverse();
+  return null;
 }
