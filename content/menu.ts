@@ -56,8 +56,8 @@ export const menu = {
       { q: "Why sign up now?", a: "The deals and rewards are only in the app. Signing up gets you the download link on launch day, so you’re in before everyone else." },
       { q: "Where do I use the deals?", a: "In the Off Menu app, at places on the list. You see the terms before you go. They aren’t available on the website." },
       { q: "How do rewards work?", a: "Log visits in the app to collect stamps. Fill a row and you unlock a reward at a place on the list." },
-      { q: "When can I use it?", a: "When the app launches. Tell us your city when you sign up." },
-      { q: "What do you do with my email?", a: "We email you when the app launches, with the download link. Nothing before that. You can unsubscribe from any email." },
+      { q: "When can I use it?", a: "When the app launches. Sign up and we’ll email you the download link." },
+      { q: "What do you do with my email?", a: "We keep your name and email to send you the download link when the app launches. Nothing before that. You can unsubscribe from any email." },
     ],
   },
   venues: {

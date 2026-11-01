@@ -12,11 +12,11 @@ test("email validation", () => {
   for (const bad of ["", "a@b", "a b@c.com", "@c.com", "a@.c", `${"x".repeat(250)}@b.co`]) assert.ok(!isEmail(bad), bad);
 });
 
-test("waitlist requires email and consent; city optional", () => {
-  assert.deepEqual(validateWaitlist({ email: "a@b.co", consent: true }).errors, {});
-  assert.deepEqual(validateWaitlist({ email: "nope", consent: false }).errors, { email: true, consent: true });
-  assert.deepEqual(validateWaitlist({ email: "a@b.co", consent: "true" }).errors, { consent: true });
-  assert.equal(validateWaitlist({ email: "a@b.co", consent: true, city: "  Leeds   city " }).input.city, "Leeds city");
+test("waitlist requires name, email and consent", () => {
+  assert.deepEqual(validateWaitlist({ name: "Ada", email: "a@b.co", consent: true }).errors, {});
+  assert.deepEqual(validateWaitlist({ name: " ", email: "nope", consent: false }).errors, { name: true, email: true, consent: true });
+  assert.deepEqual(validateWaitlist({ name: "Ada", email: "a@b.co", consent: "true" }).errors, { consent: true });
+  assert.equal(validateWaitlist({ name: "  Ada   Lovelace ", email: "a@b.co", consent: true }).input.name, "Ada Lovelace");
 });
 
 test("partner form needs venue, city, email and type; website optional but checked", () => {

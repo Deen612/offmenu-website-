@@ -8,13 +8,14 @@ export function emailConfigured() {
   return Boolean(process.env.SEND_SIGNUP_EMAIL === "true" && process.env.RESEND_API_KEY && process.env.EMAIL_FROM);
 }
 
-export async function sendConfirmation(to: string, opts: { city: string | null; inviteLink: string }) {
+export async function sendConfirmation(to: string, opts: { name: string; inviteLink: string }) {
   if (!emailConfigured()) return false;
-  const where = opts.city ? ` in ${opts.city}` : "";
   const text = [
+    `Hi ${opts.name.split(" ")[0]},`,
+    "",
     "You're on the Off Menu list.",
     "",
-    `We'll email you the download link when the Off Menu app launches${where}.`,
+    "We'll email you the download link when the Off Menu app launches.",
     "",
     "Friends who join with your link move you up:",
     opts.inviteLink,

@@ -29,7 +29,7 @@ export function Shell({ configured }: { configured: boolean }) {
       openPartner: (opener: HTMLElement | null = null) => setOpen({ kind: "partner", opener }),
       goToApply: () => {
         applyRef.current?.scrollIntoView({ block: "start" });
-        setTimeout(() => applyRef.current?.querySelector<HTMLElement>("#bill-email")?.focus({ preventScroll: true }), 400);
+        setTimeout(() => applyRef.current?.querySelector<HTMLElement>("#bill-name")?.focus({ preventScroll: true }), 400);
       },
     }),
     [],

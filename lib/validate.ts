@@ -26,29 +26,26 @@ export function isWebsite(raw: string): boolean {
   }
 }
 
-import { isQuizAnswers, type QuizAnswers } from "../content/quiz.ts";
-
 export type WaitlistInput = {
+  name: string;
   email: string;
-  city: string;
   consent: boolean;
   source: string;
-  taste: QuizAnswers | null;
   ref: string;
 };
-export type WaitlistErrors = Partial<Record<"email" | "consent", true>>;
+export type WaitlistErrors = Partial<Record<"name" | "email" | "consent", true>>;
 
 export function validateWaitlist(body: unknown): { input: WaitlistInput; errors: WaitlistErrors } {
   const b = (body ?? {}) as Record<string, unknown>;
   const input: WaitlistInput = {
+    name: cleanText(b.name, 80),
     email: cleanText(b.email, 254),
-    city: cleanText(b.city, 80),
     consent: b.consent === true,
     source: cleanText(b.source, 40) || "homepage",
-    taste: isQuizAnswers(b.taste) ? b.taste : null,
     ref: /^[a-f0-9]{8}$|^[a-z0-9]{6,12}$/.test(String(b.ref ?? "")) ? String(b.ref) : "",
   };
   const errors: WaitlistErrors = {};
+  if (!input.name) errors.name = true;
   if (!isEmail(input.email)) errors.email = true;
   if (!input.consent) errors.consent = true;
   return { input, errors };

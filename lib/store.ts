@@ -10,18 +10,14 @@ import path from "node:path";
 export type SaveResult = "saved" | "duplicate" | "unconfigured" | "failed";
 
 export type WaitlistRecord = {
+  name: string;
   email: string;
   email_normalized: string;
-  city: string | null;
   source: string;
   consent_at: string;
   consent_version: string;
-  taste: unknown;
-  persona: string | null;
   referral_code: string;
   referred_by: string | null;
-  /** Secret, returned only to the person who signed up, so they can add quiz answers later. */
-  edit_token: string;
 };
 
 export type PartnerRecord = {
@@ -129,42 +125,6 @@ async function fileRows(table: Table): Promise<Record<string, unknown>[]> {
   } catch {
     return [];
   }
-}
-
-/** Adds quiz answers to a signup that already exists. Matched by its secret edit token. */
-export async function updateTaste(editToken: string, taste: unknown, persona: string): Promise<"saved" | "missing" | "failed" | "unconfigured"> {
-  const m = mode();
-  if (m === "supabase") {
-    try {
-      const res = await sb(`waitlist_signups?edit_token=eq.${encodeURIComponent(editToken)}`, {
-        method: "PATCH",
-        headers: { Prefer: "return=representation" },
-        body: JSON.stringify({ taste, persona }),
-      });
-      if (!res.ok) return "failed";
-      const rows = (await res.json()) as unknown[];
-      return rows.length ? "saved" : "missing";
-    } catch {
-      return "failed";
-    }
-  }
-  if (m === "file") {
-    const run = fileQueue.then(async () => {
-      const rows = await fileRows("waitlist_signups");
-      const row = rows.find((r) => r.edit_token === editToken);
-      if (!row) return "missing" as const;
-      Object.assign(row, { taste, persona });
-      await writeFile(path.join(dataDir, "waitlist_signups.json"), JSON.stringify(rows, null, 2));
-      return "saved" as const;
-    });
-    fileQueue = run.catch(() => {});
-    try {
-      return await run;
-    } catch {
-      return "failed";
-    }
-  }
-  return "unconfigured";
 }
 
 export async function listRows(table: Table): Promise<Record<string, unknown>[] | null> {

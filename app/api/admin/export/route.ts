@@ -2,7 +2,7 @@ import { isAdmin } from "@/lib/admin";
 import { listRows } from "@/lib/store";
 
 const COLUMNS = {
-  waitlist: ["created_at", "email", "city", "persona", "source", "referral_code", "referred_by", "consent_at", "consent_version"],
+  waitlist: ["created_at", "name", "email", "source", "referral_code", "referred_by", "consent_at", "consent_version"],
   venues: ["created_at", "venue_name", "venue_type", "city", "contact_email", "website"],
 } as const;
 

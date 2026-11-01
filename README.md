@@ -10,12 +10,12 @@ npm test                     # validation and preview-ranking tests
 npm run build                # downloads photos first, then builds
 ```
 
-## Collecting emails (how the backend works)
+## Collecting names and emails (how the backend works)
 
-1. Someone types their email on the order slip. `POST /api/waitlist` saves it **straight away**, before any quiz, with city, consent time, a referral code and a private edit token.
-2. The four taste questions follow. `PATCH /api/waitlist` adds the answers and persona to the same row, matched by the edit token. People who quit halfway are still on the list.
-3. If Resend is set up, they get a confirmation email with their invite link.
-4. `/admin` (password from `ADMIN_PASSWORD`) shows totals, signups by city and persona, top referrers and the latest 200 signups, with **Download all emails (CSV)**.
+1. Someone enters their name and email and ticks the consent box. `POST /api/waitlist` saves them with the consent time, the consent wording version and a referral code.
+2. They get an invite link; friends who sign up through it are counted against them.
+3. Nothing is emailed at signup unless `SEND_SIGNUP_EMAIL=true`. At launch, download the CSV from `/admin` and send the launch email.
+4. `/admin` (password from `ADMIN_PASSWORD`) shows totals, top referrers and the latest 200 signups, with **Download all emails (CSV)**.
 
 ## Waitlist and venue forms
 
